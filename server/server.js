@@ -31,7 +31,7 @@ if (isDev && isDebug && process.env.DEBUG.indexOf('shrimp:front') === 0) {
 }
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../app/app.html'));
+  res.sendFile(path.join(__dirname, '../app/root.html'));
 });
 
 server.listen(port);

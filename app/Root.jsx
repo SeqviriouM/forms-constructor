@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from 'store';
 
 export default class Root extends React.Component {
   render() {
     return (
-      <div>
-        Hello world Yo
-      </div>
+      <Provider store={store}>
+        <div>
+          Hello world Yo
+        </div>
+      </Provider>
     );
   }
 }
