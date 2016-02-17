@@ -6,7 +6,6 @@ import { createHistory } from 'history';
 
 const store = compose(
   reduxReactRouter({ createHistory }),
-  devTools(),
   persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
 )(createStore)(appReducer);
 
