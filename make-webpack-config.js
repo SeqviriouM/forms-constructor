@@ -55,7 +55,7 @@ module.exports = function MakeDefaultConfig(options) {
                     exclude: /(node_modules|bower_components)/,
                     include: path.join(__dirname, 'app'),
                     query: {
-                        presets: ['react', 'es2015'],
+                        presets: ['es2015', 'stage-0', 'react'],
                     },
                 },
                 {

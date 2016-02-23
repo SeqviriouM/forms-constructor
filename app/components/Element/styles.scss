@@ -1,0 +1,16 @@
+.element {
+  position: relative;
+  padding: 10px 35px 10px 5px;
+
+  &__add {
+    position: absolute;
+    top: 17px;
+    right: 0;
+    font-size: 30px;
+    cursor: pointer;
+
+    &:hover {
+      color: white;
+    }
+  }
+}
