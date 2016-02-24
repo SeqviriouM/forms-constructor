@@ -30,11 +30,11 @@ export default class Application extends React.Component {
             <SlidingMenu
               pageWrapperId={'inner-container'}
               outerContainerId={'outer-container'}
-              width={300}
+              width={350}
               id={'stack'}
               left
             >
-              <ElementsContainer count={5}/>
+              <ElementsContainer/>
             </SlidingMenu>
             <div className='content' id='inner-container'>
               Hello world

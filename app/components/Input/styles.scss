@@ -15,7 +15,7 @@
   background: $c-input_bg;
 
   line-height: 35px;
-  color: white;
+  color: $c-input_color;
 
   @include placeholder {
     color: $c-input_placeholder;

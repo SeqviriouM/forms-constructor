@@ -3,26 +3,15 @@ import Element from 'components/Element';
 import './styles.scss';
 
 export default class ElementsContainer extends React.Component {
-  static propTypes = {
-    count: PropTypes.number,
-  }
-
-
-  getAllElemetns = () => {
-    const count = Array.from(new Array(this.props.count));
-    const jsx = count.map((item, index) => {
-      return (
-        <Element type={(index % 2 === 0) ? 'input' : 'select'} />
-      );
-    });
-
-    return jsx;
-  }
-
   render() {
     return (
       <div className='elements-container'>
-        { this.getAllElemetns() }
+        <Element type='input' />
+        <Element type='select' />
+        <Element type='datepicker' />
+        <Element type='label' />
+        <Element type='checkbox' />
+        <Element type='radio' />
       </div>
     );
   }

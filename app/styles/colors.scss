@@ -44,7 +44,7 @@ $c-dropdown-item-danger_text: $c-red;
 
 // global
 $c-main-shadow: $c-shadow;
-$c-main_bg: $c-gray-30;
+$c-main_bg: linear-gradient(45deg, rgba(177,103,73,1) 0%,rgba(209,192,152,1) 51%,rgba(177,103,73,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 $c-main_text: $c-white;
 $main-border-radius: 5px;
 
@@ -86,7 +86,8 @@ $c-info-message_success: $c-green;
 
 
 // Input
-$c-input_bg: $c-gray-20;
+$c-input_bg: $c-white;
+$c-input_color: $c-gray-20;
 $c-input_border: $c-gray-50;
 $c-input_placeholder: $c-gray-50;
 $c-input_focus: $c-blue;
