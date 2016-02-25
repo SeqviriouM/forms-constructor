@@ -19,6 +19,12 @@ body {
   font: 300 16px/18px Roboto, sans-serif;
 }
 
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
 *,
 *:before,
 *:after {
