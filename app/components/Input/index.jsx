@@ -9,6 +9,7 @@ export default class Input extends React.Component {
     className: PropTypes.string,
   }
 
+
   render() {
     const classes = cx('input', this.props.className);
 

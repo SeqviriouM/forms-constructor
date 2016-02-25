@@ -7,7 +7,9 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "dev": "NODE_ENV=development DEBUG=shrimp:front NODE_PATH=./node_modules:./app nodemon --watch server/ --exec node_modules/.bin/babel-node server/server"
+    "lint-ci": "eslint --ext .js --ext .jsx app/ server/",
+    "lint": "npm run lint-ci --silent; exit 0;",
+    "dev": "NODE_ENV=development DEBUG=shrimp:front NODE_PATH=./node_modules:./app nodemon --watch server/ --exec babel-node server/server"
   },
   "contributors": [
     {

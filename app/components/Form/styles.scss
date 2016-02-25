@@ -1,0 +1,16 @@
+@import '~styles/variables.scss';
+@import '~styles/mixins.scss';
+
+.form {
+  padding: 20px;
+  background: $c-form_bg;
+  border-radius: 5px;
+
+  &-container {
+    position: relative;
+    top: 150px;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+  }
+}

@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
 import DocumentTitle from 'react-document-title';
+import BurgerMenu from 'react-burger-menu';
 import Header from 'components/Header';
 import ElementsContainer from 'components/ElementsContainer';
-import BurgerMenu from 'react-burger-menu';
+import Form from 'components/Form';
 import 'styles/main.scss';
 
 export default class Application extends React.Component {
@@ -11,11 +12,6 @@ export default class Application extends React.Component {
     this.state = {
       sidebarOpen: true,
     };
-  }
-
-  onSetSidebarOpen = (open) => {
-    debugger;
-    this.setState({ sidebarOpen: open });
   }
 
 
@@ -36,8 +32,8 @@ export default class Application extends React.Component {
             >
               <ElementsContainer/>
             </SlidingMenu>
-            <div className='content' id='inner-container'>
-              Hello world
+            <div id='inner-container'>
+              <Form />
             </div>
           </div>
         </div>
