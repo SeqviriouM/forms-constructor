@@ -10,30 +10,61 @@ export default class Application extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sidebarOpen: true,
+      sidebarRightOpen: false,
     };
   }
 
+  onStateChangeRightSidebar = (state) => {
+    if (this.state.sidebarRightOpen !== state.isOpen) {
+      this.setState({
+        sidebarRightOpen: state.isOpen,
+      });
+    }
+  }
+
+  toggleRightSidebar = () => {
+    this.setState({
+      sidebarRightOpen: !this.state.sidebarRightOpen,
+    });
+  }
 
   render() {
-    const SlidingMenu = BurgerMenu['elastic'];
+    const ElasticMenu = BurgerMenu.elastic;
+    const SlidingMenu = BurgerMenu.slide;
 
     return (
       <DocumentTitle title='Form Constructor'>
         <div className='form-constructor-page'>
           <Header />
           <div className='container' id='outer-container'>
-            <SlidingMenu
-              pageWrapperId={'inner-container'}
-              outerContainerId={'outer-container'}
-              width={350}
-              id={'stack'}
-              left
-            >
-              <ElementsContainer/>
-            </SlidingMenu>
+            <div className='element-container'>
+              <ElasticMenu
+                pageWrapperId={'inner-container'}
+                outerContainerId={'outer-container'}
+                width={350}
+                id={'stack'}
+                left
+              >
+                <ElementsContainer/>
+              </ElasticMenu>
+            </div>
             <div id='inner-container'>
-              <Form />
+              <Form toggleRightSidebar={this.toggleRightSidebar}/>
+            </div>
+            <div className='element-editor'>
+              <SlidingMenu
+                pageWrapperId={'inner-container'}
+                outerContainerId={'outer-container'}
+                width={350}
+                id={'element-editor'}
+                isOpen={this.state.sidebarRightOpen}
+                onStateChange={this.onStateChangeRightSidebar}
+                right
+              >
+                <div>
+                  Element constructor
+                </div>
+              </SlidingMenu>
             </div>
           </div>
         </div>

@@ -30,3 +30,26 @@ button, input, optgroup, select, textarea {
 *:after {
   box-sizing: inherit;
 }
+
+/* Custom left menu */
+.element-container {
+  .bm-menu {
+    width: calc(100% - 65px) !important;
+
+    &-wrap {
+      top: 70px !important;
+    }
+  }
+}
+
+/* Custom right menu */
+.element-editor {
+  position: relative;
+  z-index: 12;
+
+  .bm-burger-button {
+    display: none;
+  }
+}
+
+

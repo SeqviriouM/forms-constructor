@@ -2,15 +2,102 @@
 @import '~styles/mixins.scss';
 
 .form {
-  padding: 20px;
-  background: $c-form_bg;
-  border-radius: 5px;
+  padding: 15px;
 
+  &-wrapper {
+    padding: 30px;
+    background: $c-form_bg;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    box-shadow: rgba(0, 0, 0, 0.14902) 0 0 0 1px, rgba(0, 0, 0, 0.498039) 0 8px 30px -5px;
+  }
   &-container {
-    position: relative;
+    position: absolute;
     top: 150px;
     width: 100%;
     max-width: 1000px;
-    margin: auto;
+    margin-left: -500px;
+    left: 50%;
+  }
+
+  &__edit {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    padding: 5px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+    background: #21B6A8;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ffffff;
+      border-radius: 100%;
+      -webkit-transform: scale(2);
+      transform: scale(2);
+      -webkit-transition-property: transform;
+      transition-property: transform;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-timing-function: ease-out;
+      transition-timing-function: ease-out;
+    }
+
+    &:hover {
+      color: white;
+
+      &:before {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      }
+
+      .pencil {
+        fill: $c-white;
+      }
+    }
+
+    .pencil {
+      transition: fill 0.5s ease;
+    }
+  }
+
+  &__title {
+    &_label {
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      color: $c-input_color;
+    }
+    &_input {
+      border: none;
+      margin: auto;
+      box-shadow: none;
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+
+      &:focus {
+        border: none;
+        box-shadow: none;
+      }
+    }
   }
 }
