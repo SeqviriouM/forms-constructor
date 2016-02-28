@@ -7,6 +7,7 @@ export default class Label extends React.Component {
 
   static propTypes = {
     className: PropTypes.string,
+    labelOnDoubleClick: PropTypes.func,
     children: PropTypes.node.isRequired,
   }
 
@@ -14,9 +15,9 @@ export default class Label extends React.Component {
     const classes = cx('label', this.props.className);
 
     return (
-      <label className={classes}>
+      <div className={classes} onDoubleClick={this.props.labelOnDoubleClick}>
         {this.props.children}
-      </label>
+      </div>
     );
   }
 }

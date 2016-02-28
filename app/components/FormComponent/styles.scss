@@ -1,0 +1,21 @@
+@import '~styles/variables.scss';
+@import '~styles/mixins.scss';
+
+.component {
+  position: relative;
+  margin: 7px 0;
+  padding: 15px;
+  background: #F4F0CB;
+  border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
+  color: $c-gray-20;
+
+  &__title {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__add-control {
+    font-style: italic;
+  }
+}

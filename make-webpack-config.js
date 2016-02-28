@@ -55,6 +55,7 @@ module.exports = function MakeDefaultConfig(options) {
                     exclude: /(node_modules|bower_components)/,
                     include: path.join(__dirname, 'app'),
                     query: {
+                        plugins: ['transform-decorators-legacy'],
                         presets: ['es2015', 'stage-0', 'react'],
                     },
                 },
