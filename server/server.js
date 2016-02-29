@@ -6,7 +6,6 @@ const app = express();
 const server = http.createServer(app);
 const port = process.env.PORT || 3000;
 const isDev = process.env.NODE_ENV === 'development';
-const env = process.env.NODE_ENV;
 const isDebug = process.env.DEBUG;
 
 

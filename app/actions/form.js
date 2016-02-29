@@ -4,8 +4,9 @@ export function getDefaultData() {
   };
 }
 
-export function addComponent() {
+export function addComponent(data) {
   return {
     type: 'ADD_COMPONENT',
+    payload: data,
   };
 }

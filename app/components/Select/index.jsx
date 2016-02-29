@@ -35,11 +35,13 @@ export default class Select extends React.Component {
   render() {
     const options = this.getOptions();
     const value = this.props.value ? this.props.value : options[0].value;
+    const classes = cx('select', this.props.className);
 
     return (
       <ReactSelect
         value={value}
         options={options}
+        className={classes}
       />
     );
   }

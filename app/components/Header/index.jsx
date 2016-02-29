@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import './styles.scss';
 
 export default class Header extends React.Component {

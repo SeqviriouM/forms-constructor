@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react';
-import DateTimeField from 'react-bootstrap-datetimepicker';
+import React from 'react';
 import DateTime from 'react-datetime';
 import './styles.scss';
 

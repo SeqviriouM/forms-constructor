@@ -1,11 +1,9 @@
 import React, { PropTypes } from 'react';
-import cx from 'classnames';
 import { Map } from 'immutable';
 import store from 'store';
 import * as actionsForm from 'actions/form';
 import Input from 'components/Input';
 import Label from 'components/Label';
-import Select from 'components/Select';
 import FormComponent from 'components/FormComponent';
 import './styles.scss';
 
@@ -80,8 +78,18 @@ export default class Form extends React.Component {
         <div className='form-wrapper'>
           <form className='form' name={form.get('name')} action={form.get('method')}>
             <div className='form__edit' onClick={this.props.toggleRightSidebar}>
-              <svg aria-hidden='true' className='pencil' height='16' role='img' version='1.1' viewBox='0 0 14 16' width='14'>
-                <path d='M0 12v3h3l8-8-3-3L0 12z m3 2H1V12h1v1h1v1z m10.3-9.3l-1.3 1.3-3-3 1.3-1.3c0.39-0.39 1.02-0.39 1.41 0l1.59 1.59c0.39 0.39 0.39 1.02 0 1.41z'>
+              <svg
+                aria-hidden='true'
+                className='pencil'
+                height='16'
+                role='img'
+                version='1.1'
+                viewBox='0 0 14 16'
+                width='14'
+              >
+                <path
+                  d='M0 12v3h3l8-8-3-3L0 12z m3 2H1V12h1v1h1v1z m10.3-9.3l-1.3 1.3-3-3 1.3-1.3c0.39-0.39 1.02-0.39 1.41 0l1.59 1.59c0.39 0.39 0.39 1.02 0 1.41z'
+                >
                 </path>
               </svg>
             </div>

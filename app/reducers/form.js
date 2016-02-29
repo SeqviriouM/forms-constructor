@@ -8,17 +8,18 @@ const initState = {
   components: List(),
 };
 const defaultComponent = {
-  id: 1000 * Math.random(),
   title: 'Default title',
   formControl: Map(),
-}
+};
 
 export function form(state = EMPTY_MAP, action) {
+  let newComponent = Object.assign({}, defaultComponent);
   switch (action.type) {
     case 'INIT':
       return fromJS(initState);
     case 'ADD_COMPONENT':
-      return state.set('components', state.get('components').push(fromJS(defaultComponent)));
+      newComponent = fromJS(Object.assign(newComponent, action.payload));
+      return state.set('components', state.get('components').push(newComponent));
     default:
       return state;
   }

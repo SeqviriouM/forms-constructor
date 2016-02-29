@@ -9,6 +9,7 @@
   "scripts": {
     "lint-ci": "eslint --ext .js --ext .jsx app/ server/",
     "lint": "npm run lint-ci --silent; exit 0;",
+    "test-client": "mocha --compilers js:babel-core/register --recursive ./app/tests",
     "dev": "NODE_ENV=development DEBUG=shrimp:front NODE_PATH=./node_modules:./app nodemon --watch server/ --exec babel-node server/server"
   },
   "contributors": [
@@ -28,9 +29,13 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
     "babel-runtime": "^6.5.0",
+    "chai": "^3.5.0",
+    "chai-immutable": "^1.5.3",
+    "chai-things": "^0.2.0",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^5.0.0",
     "eslint-plugin-react": "^3.16.1",
+    "mocha": "^2.4.5",
     "nodemon": "^1.8.1",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.2",

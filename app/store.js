@@ -1,5 +1,5 @@
 import { compose, createStore } from 'redux';
-import { devTools, persistState } from 'redux-devtools';
+import { persistState } from 'redux-devtools';
 import { appReducer } from 'reducers/reducer';
 import { reduxReactRouter } from 'redux-router';
 import { createHistory } from 'history';

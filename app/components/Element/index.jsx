@@ -9,6 +9,12 @@ import Radio from 'components/radio';
 import './styles.scss';
 
 export default class ElementsContainer extends React.Component {
+
+  static propTypes = {
+    type: PropTypes.string.isRequired,
+  }
+
+
   constructor(props) {
     super(props);
 
