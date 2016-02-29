@@ -20,6 +20,9 @@ export function form(state = EMPTY_MAP, action) {
     case 'ADD_COMPONENT':
       newComponent = fromJS(Object.assign(newComponent, action.payload));
       return state.set('components', state.get('components').push(newComponent));
+    case 'DELETE_COMPONENT':
+      const removedIndex = state.get('components').findIndex(item => item.get('id') === action.payload.id);
+      return state.set('components', state.get('components').setIn([removedIndex, 'isDeleted'], true));
     default:
       return state;
   }

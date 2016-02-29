@@ -36,7 +36,6 @@ export default class Form extends React.Component {
         <Input
           className='form__title_input'
           defaultValue={this.props.form.get('title')}
-          onClick={this.editTitle}
         />
       );
     } else {
@@ -53,12 +52,17 @@ export default class Form extends React.Component {
 
   getFormComponents() {
     return this.props.form.get('components').toJS().map((item) => (
-      <FormComponent item={item}/>
+      <FormComponent
+        item={item}
+        deleteComponent={this.deleteComponent}
+      />
     ));
   }
 
 
-  editTitle = () => {
+  editTitle = (e) => {
+    e.preventDefault();
+
     this.setState({
       editTitle: !this.state.editTitle,
     });
@@ -66,7 +70,18 @@ export default class Form extends React.Component {
 
 
   addFormComponent = () => {
-    store.dispatch(actionsForm.addComponent());
+    // TODO: Fix generating newComponetnID
+    const newComponentID = this.props.form.get('components').size;
+    store.dispatch(actionsForm.addComponent({
+      id: newComponentID,
+    }));
+  }
+
+
+  deleteComponent = (e) => {
+    store.dispatch(actionsForm.deleteComponent({
+      id: parseInt(e.currentTarget.dataset.id, 10),
+    }));
   }
 
 
@@ -76,7 +91,11 @@ export default class Form extends React.Component {
     return (
       <div className='form-container'>
         <div className='form-wrapper'>
-          <form className='form' name={form.get('name')} action={form.get('method')}>
+          <form
+            className='form'
+            name={form.get('name')}
+            action={form.get('method')}
+          >
             <div className='form__edit' onClick={this.props.toggleRightSidebar}>
               <svg
                 aria-hidden='true'

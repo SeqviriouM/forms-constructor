@@ -10,3 +10,10 @@ export function addComponent(data) {
     payload: data,
   };
 }
+
+export function deleteComponent(data) {
+  return {
+    type: 'DELETE_COMPONENT',
+    payload: data,
+  };
+}
