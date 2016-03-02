@@ -15,6 +15,7 @@ ecmaFeatures:
 rules:
   react/jsx-quotes: 0
   jsx-quotes: [2, 'prefer-single']
+  max-len: [1, 100, 2]
   id-length: 0
   new-cap: [2, { "capIsNewExceptions": [
     "List",

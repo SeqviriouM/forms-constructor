@@ -7,6 +7,7 @@ import DocumentTitle from 'react-document-title';
 import BurgerMenu from 'react-burger-menu';
 import Header from 'components/Header';
 import ElementsContainer from 'components/ElementsContainer';
+import ElementEditor from 'components/ElementEditor';
 import Form from 'components/Form';
 import 'styles/main.scss';
 
@@ -51,7 +52,7 @@ export default class Application extends React.Component {
   render() {
     const { form } = this.props;
     const ElasticMenu = BurgerMenu.elastic;
-    const SlidingMenu = BurgerMenu.slide;
+    const StackMenu = BurgerMenu.stack;
 
     return (
       <DocumentTitle title='Form Constructor'>
@@ -76,7 +77,7 @@ export default class Application extends React.Component {
               />
             </div>
             <div className='element-editor'>
-              <SlidingMenu
+              <StackMenu
                 pageWrapperId={'inner-container'}
                 outerContainerId={'outer-container'}
                 width={350}
@@ -86,9 +87,11 @@ export default class Application extends React.Component {
                 right
               >
                 <div>
-                  Element constructor
+                  <ElementEditor
+                    control={this.props.form}
+                  />
                 </div>
-              </SlidingMenu>
+              </StackMenu>
             </div>
           </div>
         </div>

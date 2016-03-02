@@ -11,7 +11,7 @@ describe('form reducer', () => {
     expect(nextState).to.equal(
       Map({
         name: 'form',
-        method: 'GET',
+        method: 'get',
         title: 'Form',
         components: List(),
       })
@@ -25,7 +25,7 @@ describe('form reducer', () => {
     expect(nextState).to.equal(Map(
       {
         name: 'form',
-        method: 'GET',
+        method: 'get',
         title: 'Form',
         components: List.of(Map({
           id: 0,
