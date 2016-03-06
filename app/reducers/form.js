@@ -24,6 +24,11 @@ export function form(state = EMPTY_MAP, action) {
     case 'DELETE_COMPONENT':
       index = state.get('components').findIndex(item => item.get('id') === action.payload.id);
       return state.set('components', state.get('components').setIn([index, 'isDeleted'], true));
+    case 'CANCEL_DELETION_COMPONENT':
+      index = state.get('components').findIndex(item => item.get('id') === action.payload.id);
+      return state.set('components', state.get('components').setIn([index, 'isDeleted'], false));
+    case 'UPDATE_COMPONENTS':
+      return state.set('components', fromJS(action.payload.components));
     default:
       return state;
   }
