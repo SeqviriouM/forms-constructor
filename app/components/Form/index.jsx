@@ -104,8 +104,7 @@ export default class Form extends React.Component {
           {({ scale, shadow, y }) =>
             <FormComponent
               item={item}
-              deleteComponent={this.deleteComponent}
-              cancelDeletionComponent={this.cancelDeletionComponent}
+              toggleRightSidebar={this.props.toggleRightSidebar}
               onMouseDown={this.handleMouseDown.bind(this, item.id, y)}
               onTouchStart={this.handleTouchStart.bind(this, item.id, y)}
               toggleLeftSidebar={this.props.toggleLeftSidebar}
@@ -179,20 +178,6 @@ export default class Form extends React.Component {
     const newComponentID = this.props.form.get('components').size;
     store.dispatch(actionsForm.addComponent({
       id: newComponentID,
-    }));
-  }
-
-
-  deleteComponent = (e) => {
-    store.dispatch(actionsForm.deleteComponent({
-      id: parseInt(e.currentTarget.dataset.id, 10),
-    }));
-  }
-
-
-  cancelDeletionComponent = (e) => {
-    store.dispatch(actionsForm.cancelDeletionComponent({
-      id: parseInt(e.currentTarget.dataset.id, 10),
     }));
   }
 

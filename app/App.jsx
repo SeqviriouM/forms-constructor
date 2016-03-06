@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import store from 'store';
 import { Map } from 'immutable';
-import * as actionsForm from 'actions/form';
 import DocumentTitle from 'react-document-title';
 import BurgerMenu from 'react-burger-menu';
 import { currentControlSelector } from 'selectors/currentControlSelector';
@@ -20,6 +19,8 @@ import 'styles/main.scss';
 export default class Application extends React.Component {
   static propTypes = {
     form: PropTypes.instanceOf(Map).isRequired,
+    currentControlId: PropTypes.number,
+    currentControl: PropTypes.instanceOf(Map).isRequired
   }
 
 

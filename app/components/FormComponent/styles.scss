@@ -48,4 +48,11 @@
     right: 50px;
     cursor: move;
   }
+
+  &__edit {
+    position: absolute;
+    top: 28px;
+    right: 80px;
+    cursor: move;
+  }
 }

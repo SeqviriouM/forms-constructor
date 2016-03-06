@@ -1,6 +1,9 @@
 import React, { PropTypes } from 'react';
 import { Motion, spring } from 'react-motion';
 import cx from 'classnames';
+import store from 'store';
+import * as actionsForm from 'actions/form';
+import * as currentControlIdActions from 'actions/currentControlId';
 import './styles.scss';
 
 
@@ -8,13 +11,34 @@ export default class Form extends React.Component {
 
   static propTypes = {
     item: PropTypes.object.isRequired,
-    deleteComponent: PropTypes.func.isRequired,
-    cancelDeletionComponent: PropTypes.func.isRequired,
     onMouseDown: PropTypes.func,
     onTouchStart: PropTypes.func,
     toggleLeftSidebar: PropTypes.func,
+    toggleRightSidebar: PropTypes.func,
     className: PropTypes.string,
     style: PropTypes.Object,
+  }
+
+
+  deleteComponent = (e) => {
+    store.dispatch(actionsForm.deleteComponent({
+      id: parseInt(e.currentTarget.dataset.id, 10),
+    }));
+  }
+
+
+  cancelDeletionComponent = (e) => {
+    store.dispatch(actionsForm.cancelDeletionComponent({
+      id: parseInt(e.currentTarget.dataset.id, 10),
+    }));
+  }
+
+
+  editControl = (e) => {
+    store.dispatch(currentControlIdActions.setControlId({
+      currentId: parseInt(e.currentTarget.dataset.id, 10),
+    }));
+    this.props.toggleRightSidebar(arguments);
   }
 
 
@@ -45,6 +69,33 @@ export default class Form extends React.Component {
           style={{ x: spring(this.props.item.isDeleted ? -30 : 0, [40, 12]) }}
         >
           {interpolated => <div
+            className='component__edit'
+            data-id={this.props.item.id}
+            onClick={this.editControl}
+            style={{ transform: `translateX(${interpolated.x}px)` }}
+          >
+            <svg
+              aria-hidden='true'
+              className='pencil'
+              height='16'
+              role='img'
+              version='1.1'
+              viewBox='0 0 14 16'
+              width='14'
+            >
+              <path
+                d='M0 12v3h3l8-8-3-3L0 12z m3 2H1V12h1v1h1v1z m10.3-9.3l-1.3 1.3-3-3 1.3-1.3c0.39-0.39 1.02-0.39 1.41 0l1.59 1.59c0.39 0.39 0.39 1.02 0 1.41z'
+              >
+              </path>
+            </svg>
+          </div>
+            }
+        </Motion>
+        <Motion
+          defaultStyle={{ x: 0 }}
+          style={{ x: spring(this.props.item.isDeleted ? -30 : 0, [40, 12]) }}
+        >
+          {interpolated => <div
             className='component__draggable'
             onMouseDown={this.props.onMouseDown}
             onTouchStart={this.props.onTouchStart}
@@ -63,7 +114,7 @@ export default class Form extends React.Component {
           {interpolated => <div
             className='component__delete'
             data-id={this.props.item.id}
-            onClick={this.props.deleteComponent}
+            onClick={this.deleteComponent}
             style={{ transform: `translateX(${interpolated.x}px)` }}
           >
             <span>
@@ -82,7 +133,7 @@ export default class Form extends React.Component {
           {interpolated => <div
             className='component__cancel'
             data-id={this.props.item.id}
-            onClick={this.props.cancelDeletionComponent}
+            onClick={this.cancelDeletionComponent}
             style={{ transform: `translateX(${interpolated.x}px)` }}
           >
             <span>
