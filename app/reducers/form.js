@@ -1,18 +1,19 @@
 import { List, Map, fromJS } from 'immutable';
 
-const EMPTY_MAP = Map();
-const initState = {
+
+const initState = Map({
   name: 'form',
   method: 'get',
   title: 'Form',
   components: List(),
-};
+});
+
 const defaultComponent = {
   title: 'Default title',
   formControl: Map(),
 };
 
-export function form(state = EMPTY_MAP, action) {
+export function form(state = initState, action) {
   let newComponent = Object.assign({}, defaultComponent);
   let index = null;
   switch (action.type) {

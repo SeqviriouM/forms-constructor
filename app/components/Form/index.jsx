@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Map, is, fromJS } from 'immutable';
 import { Motion, spring } from 'react-motion';
-import range from 'lodash.range';
 import store from 'store';
 import * as actionsForm from 'actions/form';
 import Input from 'components/Input';
@@ -20,7 +19,6 @@ function reinsert(arr, from, to) {
     const val = _arr[from];
     _arr.splice(from, 1);
     _arr.splice(to, 0, val);
-    console.log(_arr);
     return _arr;
   } else {
     return arr;
@@ -31,13 +29,13 @@ function clamp(n, min, max) {
   return Math.max(Math.min(n, max), min);
 }
 
-const itemsCount = 4;
 
 export default class Form extends React.Component {
 
   static propTypes = {
     form: PropTypes.instanceOf(Map).isRequired,
     toggleRightSidebar: PropTypes.func,
+    toggleLeftSidebar: PropTypes.func,
   }
 
 
@@ -110,11 +108,12 @@ export default class Form extends React.Component {
               cancelDeletionComponent={this.cancelDeletionComponent}
               onMouseDown={this.handleMouseDown.bind(this, item.id, y)}
               onTouchStart={this.handleTouchStart.bind(this, item.id, y)}
+              toggleLeftSidebar={this.props.toggleLeftSidebar}
               style={{
                 boxShadow: `rgba(0, 0, 0, 0.2) 0px ${shadow}px ${2 * shadow}px 0px`,
                 transform: `translate3d(0, ${y}px, 0) scale(${scale})`,
                 WebkitTransform: `translate3d(0, ${y}px, 0) scale(${scale})`,
-                zIndex: index === this.state.lastPressed ? 99 : index,
+                zIndex: this.state.isPressed && item.id === this.state.lastPressed ? 2 : 1,
               }}
             />
           }

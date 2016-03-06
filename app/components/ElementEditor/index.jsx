@@ -18,7 +18,7 @@ export default class ElementEditor extends React.Component {
       <span>Element Editor</span>
     );
 
-    if (this.props.control.get('title')) {
+    if (this.props.control && this.props.control.get('title')) {
       jsx = (
         <span>{this.props.control.get('title')}</span>
       );
@@ -29,7 +29,7 @@ export default class ElementEditor extends React.Component {
 
   getNameControl = () => {
     let jsx = '';
-    if (this.props.control.get('name')) {
+    if (this.props.control && this.props.control.get('name')) {
       jsx = (
         <div className='element-editor-item'>
           <div className='element-editor-item__title'>Name:</div>
@@ -51,7 +51,7 @@ export default class ElementEditor extends React.Component {
       { value: 'post', label: 'POST' },
     ];
 
-    if (this.props.control.get('method')) {
+    if (this.props.control && this.props.control.get('method')) {
       jsx = (
         <div className='element-editor-item'>
           <div className='element-editor-item__title'>Method:</div>

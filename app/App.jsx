@@ -5,6 +5,7 @@ import { Map } from 'immutable';
 import * as actionsForm from 'actions/form';
 import DocumentTitle from 'react-document-title';
 import BurgerMenu from 'react-burger-menu';
+import { currentControlSelector } from 'selectors/currentControlSelector';
 import Header from 'components/Header';
 import ElementsContainer from 'components/ElementsContainer';
 import ElementEditor from 'components/ElementEditor';
@@ -13,6 +14,8 @@ import 'styles/main.scss';
 
 @connect(state => ({
   form: state.form,
+  currentControlId: -1,
+  currentControl: currentControlSelector(state),
 }))
 export default class Application extends React.Component {
   static propTypes = {
@@ -24,12 +27,8 @@ export default class Application extends React.Component {
     super(props);
     this.state = {
       sidebarRightOpen: false,
+      sidebarLeftOpen: false,
     };
-  }
-
-
-  componentWillMount = () => {
-    store.dispatch(actionsForm.getDefaultData());
   }
 
 
@@ -42,9 +41,25 @@ export default class Application extends React.Component {
   }
 
 
+  onStateChangeLeftSidebar = (state) => {
+    if (this.state.sidebarLeftOpen !== state.isOpen) {
+      this.setState({
+        sidebarLeftOpen: state.isOpen,
+      });
+    }
+  }
+
+
   toggleRightSidebar = () => {
     this.setState({
       sidebarRightOpen: !this.state.sidebarRightOpen,
+    });
+  }
+
+
+  toggleLeftSidebar = () => {
+    this.setState({
+      sidebarLeftOpen: !this.state.sidebarLeftOpen,
     });
   }
 
@@ -65,6 +80,8 @@ export default class Application extends React.Component {
                 outerContainerId={'outer-container'}
                 width={350}
                 id={'stack'}
+                isOpen={this.state.sidebarLeftOpen}
+                onStateChange={this.onStateChangeLeftSidebar}
                 left
               >
                 <ElementsContainer/>
@@ -74,6 +91,7 @@ export default class Application extends React.Component {
               <Form
                 form={form}
                 toggleRightSidebar={this.toggleRightSidebar}
+                toggleLeftSidebar={this.toggleLeftSidebar}
               />
             </div>
             <div className='element-editor'>
@@ -88,7 +106,7 @@ export default class Application extends React.Component {
               >
                 <div>
                   <ElementEditor
-                    control={this.props.form}
+                    control={this.props.currentControl}
                   />
                 </div>
               </StackMenu>
