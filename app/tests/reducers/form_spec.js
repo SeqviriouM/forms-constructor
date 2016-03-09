@@ -123,4 +123,64 @@ describe('form reducer', () => {
       ),
     }));
   });
+
+
+  it('handle UPDATE_COMPONENTS', () => {
+    const initialState = Map({
+      name: 'form',
+      method: 'get',
+      title: 'Form',
+      components: List.of(
+        Map({
+          id: 0,
+          title: 'Default title 0',
+          formControl: Map(),
+          isDeleted: false,
+        }),
+        Map({
+          id: 1,
+          title: 'Default title 1',
+          formControl: Map(),
+          isDeleted: false,
+        })
+      ),
+    });
+
+    const newComponentsOrder = [
+      {
+        id: 1,
+        title: 'Default title 1',
+        formControl: Map(),
+        isDeleted: false,
+      },
+      {
+        id: 0,
+        title: 'Default title 0',
+        formControl: Map(),
+        isDeleted: false,
+      },
+    ];
+
+    const nextState = form(initialState, updateComponents({ components: newComponentsOrder }));
+
+    expect(nextState).to.equal(Map({
+      name: 'form',
+      method: 'get',
+      title: 'Form',
+      components: List.of(
+        Map({
+          id: 1,
+          title: 'Default title 1',
+          formControl: Map(),
+          isDeleted: false,
+        }),
+        Map({
+          id: 0,
+          title: 'Default title 0',
+          formControl: Map(),
+          isDeleted: false,
+        })
+      ),
+    }));
+  });
 });
