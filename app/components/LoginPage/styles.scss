@@ -1,0 +1,15 @@
+@import '~styles/variables.scss';
+
+.login {
+  &-page {
+    height: 100vh;
+    background-color: lightcoral;
+  }
+
+  &-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

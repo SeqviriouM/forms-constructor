@@ -49,7 +49,7 @@ export default class Tabs extends React.Component {
       <div className={cx('tabs', className)}>
         <div className='tabs__hr-wrapper'>
           <hr className='tabs__hr' style={{
-            left: `${parseInt(tabWidth, 10) * (this.props.currentTabId - 1)}%`,
+            left: `${parseInt(tabWidth, 10) * (this.state.currentTabId - 1)}%`,
             width: `${tabWidth}`,
           }}
           />

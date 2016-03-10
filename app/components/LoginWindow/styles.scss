@@ -1,0 +1,24 @@
+@import '~styles/variables.scss';
+
+.login-window {
+  z-index: 1;
+
+  overflow: hidden;
+
+  width: 500px;
+
+  margin: auto;
+
+  border: 1px solid $c-login-window_border;
+  border-radius: $main-border-radius;
+  background-color: $c-login-window_bg;
+  box-shadow: 0 0 30px 2px $c-main-shadow;
+
+  font-size: 20px;
+  &__tabs {
+    border-bottom: solid 1px $c-login-window_border;
+
+    font-size: 1.1em;
+    line-height: 60px;
+  }
+}

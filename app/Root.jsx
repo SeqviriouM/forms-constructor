@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { ReduxRouter } from 'redux-router';
 import store from 'store';
-import App from 'App';
+import routes from 'routes/routes';
 
 export default class Root extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <App />
+        <ReduxRouter />
       </Provider>
     );
   }
