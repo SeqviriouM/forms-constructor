@@ -1,0 +1,27 @@
+@import '~styles/variables.scss';
+
+.tabs {
+  line-height: 40px;
+
+  &__hr {
+    position: absolute;
+    top: 0;
+    display: block;
+    height: 2px;
+    margin: 0;
+    transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    background-color: $c-highlight;
+    border: none;
+
+    &-wrapper {
+      position: relative;
+      width: 100%;
+    }
+  }
+  &:after {
+    display: table;
+    clear: both;
+
+    content: '';
+  }
+}

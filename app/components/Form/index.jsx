@@ -155,7 +155,7 @@ export default class Form extends React.Component {
       const mouse = pageY - delta;
       const row = clamp(Math.round(mouse / 100), 0, this.props.form.get('components').size - 1);
       const newOrder = reinsert(this.props.form.get('components').toJS(), this.props.form.get('components').toJS().findIndex(val => val.id === lastPressed), row);
-      this.setState({ mouse: mouse });
+      this.setState({ mouse });
       if (!is(this.props.form.get('components'), fromJS(newOrder))) {
         store.dispatch(actionsForm.updateComponents({
           components: newOrder,
@@ -199,7 +199,7 @@ export default class Form extends React.Component {
             name={form.get('name')}
             action={form.get('method')}
           >
-            <div className='form__edit' onClick={this.props.toggleRightSidebar}>
+            <a className='form__edit' onClick={this.props.toggleRightSidebar}>
               <svg
                 aria-hidden='true'
                 className='pencil'
@@ -214,7 +214,7 @@ export default class Form extends React.Component {
                 >
                 </path>
               </svg>
-            </div>
+            </a>
             <div>
               {this.getTitle()}
             </div>

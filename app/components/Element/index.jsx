@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Motion, spring } from 'react-motion';
+import store from 'store';
+import * as actionsForm from 'actions/form';
 import Input from 'components/Input';
 import Select from 'components/Select';
 import Datepicker from 'components/Datepicker';
@@ -36,6 +38,26 @@ export default class ElementsContainer extends React.Component {
     });
   }
 
+
+  addControlToForm = (e) => {
+    const targetType = e.currentTarget.dataset.type;
+
+    if (store.getState().currentControlId !== -1) {
+      store.dispatch(actionsForm.addControl({
+        control: {
+          name: 'name',
+          title: '',
+          size: '',
+          placeholder: '',
+          type: targetType,
+        },
+        currentId: store.getState().currentControlId,
+      }));
+    } else {
+      console.log('Choose component where add control');
+    }
+  }
+
   render() {
     let renderTemplate;
 
@@ -53,6 +75,8 @@ export default class ElementsContainer extends React.Component {
           >
             {interpolated => <div
               className='element__add'
+              data-type='input'
+              onClick={this.addControlToForm}
               style={{ transform: `translateX(${interpolated.x}px)` }}
             >
               <span>+</span>
@@ -75,6 +99,8 @@ export default class ElementsContainer extends React.Component {
           >
             {interpolated => <div
               className='element__add'
+              data-type='select'
+              onClick={this.addControlToForm}
               style={{ transform: `translateX(${interpolated.x}px)` }}
             >
               <span>+</span>
@@ -97,6 +123,7 @@ export default class ElementsContainer extends React.Component {
           >
             {interpolated => <div
               className='element__add'
+              data-type='datepicker'
               style={{ transform: `translateX(${interpolated.x}px)` }}
             >
               <span>+</span>
@@ -121,6 +148,7 @@ export default class ElementsContainer extends React.Component {
           >
             {interpolated => <div
               className='element__add'
+              data-type='label'
               style={{ transform: `translateX(${interpolated.x}px)` }}
             >
               <span>+</span>
@@ -143,6 +171,7 @@ export default class ElementsContainer extends React.Component {
           >
             {interpolated => <div
               className='element__add'
+              data-type='checkbox'
               style={{ transform: `translateX(${interpolated.x}px)` }}
             >
               <span>+</span>
@@ -165,6 +194,7 @@ export default class ElementsContainer extends React.Component {
           >
             {interpolated => <div
               className='element__add'
+              data-type='radio'
               style={{ transform: `translateX(${interpolated.x}px)` }}
             >
               <span>+</span>

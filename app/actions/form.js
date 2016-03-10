@@ -35,3 +35,11 @@ export function updateComponents(data) {
     payload: data,
   };
 }
+
+
+export function addControl(data) {
+  return {
+    type: 'ADD_CONTROL',
+    payload: data,
+  };
+}

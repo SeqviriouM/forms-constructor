@@ -21,6 +21,24 @@ export default class Form extends React.Component {
   }
 
 
+  getControl() {
+    let jsx = '';
+    if (Object.keys(this.props.item.formControl).length > 0) {
+      jsx = <Element type={this.props.item.formControl.type} />;
+    } else {
+      jsx = (
+        <span
+          className='component__add-control'
+          onClick={this.props.toggleLeftSidebar}
+        >
+          Add control
+        </span>
+      );
+    }
+    return jsx;
+  }
+
+
   deleteComponent = (e) => {
     store.dispatch(actionsForm.deleteComponent({
       id: parseInt(e.currentTarget.dataset.id, 10),
@@ -40,24 +58,6 @@ export default class Form extends React.Component {
       currentId: parseInt(e.currentTarget.dataset.id, 10),
     }));
     this.props.toggleRightSidebar(arguments);
-  }
-
-
-  getControl() {
-    let jsx = '';
-    if (Object.keys(this.props.item.formControl).length > 0) {
-      jsx = <Element type={this.props.item.formControl.type} />;
-    } else {
-      jsx = (
-        <span
-          className='component__add-control'
-          onClick={this.props.toggleLeftSidebar}
-        >
-          Add control
-        </span>
-      );
-    }
-    return jsx;
   }
 
 
