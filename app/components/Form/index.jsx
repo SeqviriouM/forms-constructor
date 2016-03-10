@@ -68,14 +68,20 @@ export default class Form extends React.Component {
 
     if (this.state.editTitle) {
       jsx = (
-        <Input
-          className='form__title_input'
-          defaultValue={this.props.form.get('title')}
-        />
+        <div className='form-title'>
+          <Input
+            className='form-title__input'
+            defaultValue={this.props.form.get('title')}
+          />
+          <div className='form-title__hr'>
+            <hr className='form-title__hr_default' />
+            <hr className='form-title__hr_active' />
+          </div>
+        </div>
       );
     } else {
       jsx = (<Label
-        className='form__title_label'
+        className='form-title__label'
         labelOnDoubleClick={this.editTitle}
       >
         <span>{this.props.form.get('title')}</span>

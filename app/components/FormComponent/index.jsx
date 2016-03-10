@@ -4,6 +4,7 @@ import cx from 'classnames';
 import store from 'store';
 import * as actionsForm from 'actions/form';
 import * as currentControlIdActions from 'actions/currentControlId';
+import Element from 'components/Element';
 import './styles.scss';
 
 
@@ -42,6 +43,24 @@ export default class Form extends React.Component {
   }
 
 
+  getControl() {
+    let jsx = '';
+    if (Object.keys(this.props.item.formControl).length > 0) {
+      jsx = <Element type={this.props.item.formControl.type} />;
+    } else {
+      jsx = (
+        <span
+          className='component__add-control'
+          onClick={this.props.toggleLeftSidebar}
+        >
+          Add control
+        </span>
+      );
+    }
+    return jsx;
+  }
+
+
   render() {
     const classes = cx('component', {
       component_deleted: this.props.item.isDeleted,
@@ -56,17 +75,12 @@ export default class Form extends React.Component {
         <div className='component__title'>
           <span>{this.props.item.title}-{this.props.item.id}</span>
         </div>
-        <div>
-          <span
-            className='component__add-control'
-            onClick={this.props.toggleLeftSidebar}
-          >
-            Add control
-          </span>
+        <div className='compoennt__control'>
+          {this.getControl()}
         </div>
         <Motion
           defaultStyle={{ x: 0 }}
-          style={{ x: spring(this.props.item.isDeleted ? -30 : 0, [40, 12]) }}
+          style={{ x: spring(this.props.item.isDeleted ? -30 : 0, { stiffness: 140, damping: 10 }) }}
         >
           {interpolated => <div
             className='component__edit'
@@ -93,7 +107,7 @@ export default class Form extends React.Component {
         </Motion>
         <Motion
           defaultStyle={{ x: 0 }}
-          style={{ x: spring(this.props.item.isDeleted ? -30 : 0, [40, 12]) }}
+          style={{ x: spring(this.props.item.isDeleted ? -30 : 0, { stiffness: 140, damping: 10 }) }}
         >
           {interpolated => <div
             className='component__draggable'
@@ -109,7 +123,7 @@ export default class Form extends React.Component {
         </Motion>
         <Motion
           defaultStyle={{ x: 0 }}
-          style={{ x: spring(!this.props.item.isDeleted ? 0 : -30, [140, 12]) }}
+          style={{ x: spring(!this.props.item.isDeleted ? 0 : -30, { stiffness: 140, damping: 10 }) }}
         >
           {interpolated => <div
             className='component__delete'
@@ -128,7 +142,7 @@ export default class Form extends React.Component {
         </Motion>
         <Motion
           defaultStyle={{ x: 0 }}
-          style={{ x: spring(this.props.item.isDeleted ? -100 : 0, [40, 12]) }}
+          style={{ x: spring(this.props.item.isDeleted ? -100 : 0, { stiffness: 140, damping: 12 }) }}
         >
           {interpolated => <div
             className='component__cancel'
