@@ -4,6 +4,7 @@ import Input from 'components/Input';
 import Button from 'components/Button';
 import SVGButton from 'components/SVGButton';
 import DocumentTitle from 'react-document-title';
+import store from 'store';
 import './styles.scss';
 
 
@@ -30,11 +31,17 @@ export default class Login extends React.Component {
   }
 
 
+  auth = (e) => {
+    e.preventDefault();
+    store.history.push('/');
+  }
+
   render() {
     return (
       <DocumentTitle title='Login page'>
         <form
           className='login'
+          onSubmit={this.auth}
         >
           <InfoMessage
             className='login__info-message'
@@ -46,6 +53,13 @@ export default class Login extends React.Component {
             value={this.state.email}
             name='email'
             placeholder='Email'
+          />
+          <Input
+            className='login__input'
+            value={this.state.password}
+            type='password'
+            name='password'
+            placeholder='Password'
           />
           <Button
             className='login__submit-button'
