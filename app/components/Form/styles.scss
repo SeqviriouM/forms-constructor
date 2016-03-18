@@ -2,10 +2,10 @@
 @import '~styles/mixins.scss';
 
 .form {
-  padding: 15px;
+  padding: 0 15px 15px 15px;
 
   &-wrapper {
-    padding: 30px;
+    padding: 30px 45px 45px 45px;
     background: $c-form_bg;
     border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
     box-shadow: rgba(0, 0, 0, 0.14902) 0 0 0 1px, rgba(0, 0, 0, 0.498039) 0 8px 30px -5px;
@@ -17,6 +17,12 @@
     max-width: 1000px;
     margin-left: -500px;
     left: 50%;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
   }
 
   &__edit {
@@ -133,59 +139,6 @@
 
     &:active {
       box-shadow: rgba(0, 0, 0, 0.156863) 0 3px 10px, rgba(0, 0, 0, 0.227451) 0 3px 10px;
-    }
-  }
-
-  &-title {
-    position: relative;
-    &__label {
-      text-align: center;
-      font-size: 30px;
-      line-height: 37px;
-      font-weight: bold;
-      color: $c-input_color;
-    }
-    &__input {
-      border: none;
-      margin: auto;
-      box-shadow: none;
-      text-align: center;
-      font-size: 30px;
-      font-weight: bold;
-
-      &:focus {
-        border: none;
-        box-shadow: none;
-
-        & ~ .form-title__hr .form-title__hr_active {
-          transform: scaleX(1);
-        }
-      }
-    }
-
-    &__hr {
-      &_default {
-        position:absolute;
-        width:100%;
-        border:none;
-        border-bottom:solid 1px;
-        border-color:#e0e0e0;
-        bottom:0;
-        box-sizing:content-box;
-        margin:0;
-      }
-      &_active {
-        position: absolute;
-        width: 100%;
-        border-style: none none solid;
-        border-bottom-width: 2px;
-        border-color: rgb(0, 188, 212);
-        bottom: 0;
-        box-sizing: content-box;
-        margin: 0;
-        transform: scaleX(0);
-        transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-      }
     }
   }
 }

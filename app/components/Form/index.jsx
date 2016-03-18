@@ -3,8 +3,7 @@ import { Map, is, fromJS } from 'immutable';
 import { Motion, spring } from 'react-motion';
 import store from 'store';
 import * as actionsForm from 'actions/form';
-import Input from 'components/Input';
-import Label from 'components/Label';
+import MaterialInput from 'components/MaterialInput';
 import FormComponent from 'components/FormComponent';
 import './styles.scss';
 
@@ -47,7 +46,6 @@ export default class Form extends React.Component {
     name: 'form',
     method: 'get',
     title: 'Form',
-    editTitle: false,
     mouse: 0,
     delta: 0,
     isPressed: false,
@@ -63,34 +61,6 @@ export default class Form extends React.Component {
   }
 
 
-  getTitle() {
-    let jsx = '';
-
-    if (this.state.editTitle) {
-      jsx = (
-        <div className='form-title'>
-          <Input
-            className='form-title__input'
-            defaultValue={this.props.form.get('title')}
-          />
-          <div className='form-title__hr'>
-            <hr className='form-title__hr_default' />
-            <hr className='form-title__hr_active' />
-          </div>
-        </div>
-      );
-    } else {
-      jsx = (<Label
-        className='form-title__label'
-        labelOnDoubleClick={this.editTitle}
-      >
-        <span>{this.props.form.get('title')}</span>
-      </Label>);
-    }
-    return jsx;
-  }
-
-
   getFormComponents() {
     return this.props.form.get('components').toJS().map((item, index) => {
       const style = this.state.lastPressed === item.id && this.state.isPressed
@@ -102,7 +72,8 @@ export default class Form extends React.Component {
         : {
           scale: spring(1, springConfig),
           shadow: spring(1, springConfig),
-          y: spring(index * 100, springConfig),
+          // y: spring(index * 100, springConfig),
+          y: spring(0),
         };
 
       return (
@@ -170,15 +141,6 @@ export default class Form extends React.Component {
   }
 
 
-  editTitle = (e) => {
-    e.preventDefault();
-
-    this.setState({
-      editTitle: !this.state.editTitle,
-    });
-  }
-
-
   addFormComponent = () => {
     // TODO: Fix generating newComponetnID
     const newComponentID = this.props.form.get('components').size;
@@ -215,10 +177,10 @@ export default class Form extends React.Component {
                 </path>
               </svg>
             </a>
-            <div>
-              {this.getTitle()}
+            <div className='form__title'>
+              <MaterialInput defaultValue={this.props.form.get('title')} />
             </div>
-            <div className='form__components' style={{ height: `${100 * this.props.form.get('components').size}px` }}>
+            <div className='form__components'>
               {this.getFormComponents()}
             </div>
             <div className='form__add-component' onClick={this.addFormComponent}>

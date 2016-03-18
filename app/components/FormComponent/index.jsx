@@ -5,6 +5,7 @@ import store from 'store';
 import * as actionsForm from 'actions/form';
 import * as currentControlIdActions from 'actions/currentControlId';
 import Element from 'components/Element';
+import MaterialInput from 'components/MaterialInput';
 import './styles.scss';
 
 
@@ -39,6 +40,13 @@ export default class Form extends React.Component {
   }
 
 
+  setCurrentComponent = (e) => {
+    store.dispatch(currentControlIdActions.setControlId({
+      currentId: parseInt(e.currentTarget.dataset.id, 10),
+    }));
+  }
+
+
   deleteComponent = (e) => {
     store.dispatch(actionsForm.deleteComponent({
       id: parseInt(e.currentTarget.dataset.id, 10),
@@ -64,6 +72,7 @@ export default class Form extends React.Component {
   render() {
     const classes = cx('component', {
       component_deleted: this.props.item.isDeleted,
+      component_active: this.props.item.id === store.getState().currentControlId,
     }, this.props.className);
 
     return (
@@ -71,9 +80,12 @@ export default class Form extends React.Component {
         className={classes}
         data-id={this.props.item.id}
         style={this.props.style}
+        onClick={this.setCurrentComponent}
       >
         <div className='component__title'>
-          <span>{this.props.item.title}-{this.props.item.id}</span>
+          <MaterialInput
+            defaultValue={this.props.item.title}
+          />
         </div>
         <div className='compoennt__control'>
           {this.getControl()}
