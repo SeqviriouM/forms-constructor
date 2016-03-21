@@ -6,12 +6,12 @@ export default class ElementsContainer extends React.Component {
   render() {
     return (
       <div className='elements-container'>
-        <Element type='input' />
-        <Element type='select' />
-        <Element type='datepicker' />
-        <Element type='label' />
-        <Element type='checkbox' />
-        <Element type='radio' />
+        <Element className='element-container__item' type='input' />
+        <Element className='element-container__item' type='select' />
+        <Element className='element-container__item' type='datepicker' />
+        <Element className='element-container__item' type='label' />
+        <Element className='element-container__item' type='checkbox' />
+        <Element className='element-container__item' type='radio' />
       </div>
     );
   }

@@ -6,6 +6,7 @@ import * as actionsForm from 'actions/form';
 import * as currentControlIdActions from 'actions/currentControlId';
 import Element from 'components/Element';
 import MaterialInput from 'components/MaterialInput';
+import Button from 'components/Button';
 import './styles.scss';
 
 
@@ -28,12 +29,12 @@ export default class Form extends React.Component {
       jsx = <Element type={this.props.item.formControl.type} />;
     } else {
       jsx = (
-        <span
+        <div
           className='component__add-control'
           onClick={this.props.toggleLeftSidebar}
         >
           Add control
-        </span>
+        </div>
       );
     }
     return jsx;

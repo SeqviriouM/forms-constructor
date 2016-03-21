@@ -31,7 +31,6 @@ export function form(state = initState, action) {
     case 'UPDATE_COMPONENTS':
       return state.set('components', fromJS(action.payload.components));
     case 'ADD_CONTROL':
-      debugger;
       index = state.get('components').findIndex(item => item.get('id') === action.payload.currentId);
       return state.set('components', state.get('components').setIn([index, 'formControl'], fromJS(action.payload.control)));
     default:

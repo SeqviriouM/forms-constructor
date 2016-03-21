@@ -49,6 +49,10 @@
   }
 
   &__add-control {
+    padding: 15px;
+    border: 1px dashed lightgray;
+    text-align: center;
+    cursor: pointer;
     font-style: italic;
   }
 
@@ -58,6 +62,7 @@
     right: 20px;
     width: 20px;
     height: 20px;
+    cursor: pointer;
   }
 
   &__cancel {
@@ -66,6 +71,7 @@
     right: -80px;
     width: 20px;
     height: 20px;
+    cursor: pointer;
   }
 
   &__draggable {

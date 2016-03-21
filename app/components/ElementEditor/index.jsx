@@ -6,6 +6,7 @@ import Tabs from 'components/Tabs';
 import Tab from 'components/Tab';
 import TabPanel from 'components/TabPanel';
 import TabContent from 'components/TabContent';
+import StyleEditor from 'components/StyleEditor';
 import './styles.scss';
 
 
@@ -119,7 +120,7 @@ export default class ElementEditor extends React.Component {
             </div>
           </TabPanel>
           <TabPanel id={2}>
-            Style
+            <StyleEditor />
           </TabPanel>
         </TabContent>
       </div>

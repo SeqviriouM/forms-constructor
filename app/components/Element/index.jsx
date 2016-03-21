@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Motion, spring } from 'react-motion';
 import store from 'store';
+import cx from 'classnames';
 import * as actionsForm from 'actions/form';
 import Input from 'components/Input';
 import Select from 'components/Select';
@@ -14,6 +15,7 @@ export default class ElementsContainer extends React.Component {
 
   static propTypes = {
     type: PropTypes.string.isRequired,
+    className: PropTypes.string,
   }
 
 
@@ -60,11 +62,12 @@ export default class ElementsContainer extends React.Component {
 
   render() {
     let renderTemplate;
+    const classes = cx('element', this.props.className);
 
     if (this.props.type === 'input') {
       renderTemplate = (
         <div
-          className='element'
+          className={classes}
           onMouseOver={this.startHoverAnimation}
           onMouseOut={this.stopHoverAnimation}
         >
@@ -88,7 +91,7 @@ export default class ElementsContainer extends React.Component {
     } else if (this.props.type === 'select') {
       renderTemplate = (
         <div
-          className='element'
+          className={classes}
           onMouseOver={this.startHoverAnimation}
           onMouseOut={this.stopHoverAnimation}
         >
@@ -112,7 +115,7 @@ export default class ElementsContainer extends React.Component {
     } else if (this.props.type === 'datepicker') {
       renderTemplate = (
         <div
-          className='element'
+          className={classes}
           onMouseOver={this.startHoverAnimation}
           onMouseOut={this.stopHoverAnimation}
         >
@@ -135,7 +138,7 @@ export default class ElementsContainer extends React.Component {
     } else if (this.props.type === 'label') {
       renderTemplate = (
         <div
-          className='element'
+          className={classes}
           onMouseOver={this.startHoverAnimation}
           onMouseOut={this.stopHoverAnimation}
         >
@@ -160,7 +163,7 @@ export default class ElementsContainer extends React.Component {
     } else if (this.props.type === 'checkbox') {
       renderTemplate = (
         <div
-          className='element'
+          className={classes}
           onMouseOver={this.startHoverAnimation}
           onMouseOut={this.stopHoverAnimation}
         >
@@ -183,7 +186,7 @@ export default class ElementsContainer extends React.Component {
     } else if (this.props.type === 'radio') {
       renderTemplate = (
         <div
-          className='element'
+          className={classes}
           onMouseOver={this.startHoverAnimation}
           onMouseOut={this.stopHoverAnimation}
         >
