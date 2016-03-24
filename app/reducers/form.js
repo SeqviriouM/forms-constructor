@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import { FORM, COMPONENT } from 'constants';
+import { FORM, COMPONENT } from '../constants';
 
 const defaultForm = FORM;
 const defaultComponent = COMPONENT;

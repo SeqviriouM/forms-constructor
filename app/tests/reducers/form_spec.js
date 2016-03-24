@@ -2,20 +2,15 @@ import { List, Map } from 'immutable';
 import { expect } from 'chai';
 import { form } from '../../reducers/form';
 import { getDefaultData, addComponent, deleteComponent, cancelDeletionComponent, updateComponents } from '../../actions/form';
+import { FORM } from '../../constants';
+
 
 describe('form reducer', () => {
   it('handle INIT', () => {
     const initialState = {};
     const nextState = form(initialState, getDefaultData());
 
-    expect(nextState).to.equal(
-      Map({
-        name: 'form',
-        method: 'get',
-        title: 'Form',
-        components: List(),
-      })
-    );
+    expect(nextState).to.equal(FORM);
   });
 
 
