@@ -6,7 +6,8 @@ const DEFAULT_CONTROL_STYLE = {
   paddingBottom: '10px',
   paddingLeft: '0px',
   paddingRight: '0px',
-}
+};
+
 const CONTROLS = {
   INPUT: {
     name: 'defaultName',
