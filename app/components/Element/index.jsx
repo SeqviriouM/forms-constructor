@@ -68,142 +68,50 @@ export default class ElementsContainer extends React.Component {
       renderTemplate = (
         <div
           className={classes}
-          onMouseOver={this.startHoverAnimation}
-          onMouseOut={this.stopHoverAnimation}
         >
           <Input className='element__input' />
-          <Motion
-            defaultStyle={{ x: 0 }}
-            style={{ x: spring(this.state.hoverAnimation ? 0 : 300, [140, 12]) }}
-          >
-            {interpolated => <div
-              className='element__add'
-              data-type='input'
-              onClick={this.addControlToForm}
-              style={{ transform: `translateX(${interpolated.x}px)` }}
-            >
-              <span>+</span>
-            </div>
-            }
-          </Motion>
         </div>
       );
     } else if (this.props.type === 'select') {
       renderTemplate = (
         <div
           className={classes}
-          onMouseOver={this.startHoverAnimation}
-          onMouseOut={this.stopHoverAnimation}
         >
           <Select/>
-          <Motion
-            defaultStyle={{ x: 0 }}
-            style={{ x: spring(this.state.hoverAnimation ? 0 : 300, [140, 12]) }}
-          >
-            {interpolated => <div
-              className='element__add'
-              data-type='select'
-              onClick={this.addControlToForm}
-              style={{ transform: `translateX(${interpolated.x}px)` }}
-            >
-              <span>+</span>
-            </div>
-              }
-          </Motion>
         </div>
       );
     } else if (this.props.type === 'datepicker') {
       renderTemplate = (
         <div
           className={classes}
-          onMouseOver={this.startHoverAnimation}
-          onMouseOut={this.stopHoverAnimation}
         >
           <Datepicker />
-          <Motion
-            defaultStyle={{ x: 0 }}
-            style={{ x: spring(this.state.hoverAnimation ? 0 : 300, [140, 12]) }}
-          >
-            {interpolated => <div
-              className='element__add'
-              data-type='datepicker'
-              style={{ transform: `translateX(${interpolated.x}px)` }}
-            >
-              <span>+</span>
-            </div>
-              }
-          </Motion>
         </div>
       );
     } else if (this.props.type === 'label') {
       renderTemplate = (
         <div
           className={classes}
-          onMouseOver={this.startHoverAnimation}
-          onMouseOut={this.stopHoverAnimation}
         >
           <Label className='element__label'>
             Label
           </Label>
-          <Motion
-            defaultStyle={{ x: 0 }}
-            style={{ x: spring(this.state.hoverAnimation ? 0 : 300, [140, 12]) }}
-          >
-            {interpolated => <div
-              className='element__add'
-              data-type='label'
-              style={{ transform: `translateX(${interpolated.x}px)` }}
-            >
-              <span>+</span>
-            </div>
-              }
-          </Motion>
         </div>
       );
     } else if (this.props.type === 'checkbox') {
       renderTemplate = (
         <div
           className={classes}
-          onMouseOver={this.startHoverAnimation}
-          onMouseOut={this.stopHoverAnimation}
         >
           <Checkbox className='element__checkbox' />
-          <Motion
-            defaultStyle={{ x: 0 }}
-            style={{ x: spring(this.state.hoverAnimation ? 0 : 300, [140, 12]) }}
-          >
-            {interpolated => <div
-              className='element__add'
-              data-type='checkbox'
-              style={{ transform: `translateX(${interpolated.x}px)` }}
-            >
-              <span>+</span>
-            </div>
-              }
-          </Motion>
         </div>
       );
     } else if (this.props.type === 'radio') {
       renderTemplate = (
         <div
           className={classes}
-          onMouseOver={this.startHoverAnimation}
-          onMouseOut={this.stopHoverAnimation}
         >
           <Radio className='element__radio' />
-          <Motion
-            defaultStyle={{ x: 0 }}
-            style={{ x: spring(this.state.hoverAnimation ? 0 : 300, [140, 12]) }}
-          >
-            {interpolated => <div
-              className='element__add'
-              data-type='radio'
-              style={{ transform: `translateX(${interpolated.x}px)` }}
-            >
-              <span>+</span>
-            </div>
-              }
-          </Motion>
         </div>
       );
     }

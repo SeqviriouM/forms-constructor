@@ -1,24 +1,15 @@
-import { List, Map, fromJS } from 'immutable';
+import { fromJS } from 'immutable';
+import { FORM, COMPONENT } from 'constants';
 
+const defaultForm = FORM;
+const defaultComponent = COMPONENT;
 
-const initState = Map({
-  name: 'form',
-  method: 'get',
-  title: 'Form',
-  components: List(),
-});
-
-const defaultComponent = {
-  title: 'Default title',
-  formControl: Map(),
-};
-
-export function form(state = initState, action) {
+export function form(state = defaultForm, action) {
   let newComponent = Object.assign({}, defaultComponent);
   let index = null;
   switch (action.type) {
     case 'INIT':
-      return fromJS(initState);
+      return fromJS(defaultForm);
     case 'ADD_COMPONENT':
       newComponent = fromJS(Object.assign(newComponent, action.payload));
       return state.set('components', state.get('components').push(newComponent));
