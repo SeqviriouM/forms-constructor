@@ -42,13 +42,30 @@ export default class ElementEditor extends React.Component {
 
   getNameControl = () => {
     let jsx = '';
-    if (this.props.control && this.props.control.get('name')) {
+    if (this.props.control && this.props.control.get('name') !== undefined) {
       jsx = (
         <div className='element-editor-item'>
           <div className='element-editor-item__title'>Name:</div>
           <Input
             className='element-editor-item__control'
             defaultValue={this.props.control.get('name')}
+          />
+        </div>
+      );
+    }
+    return jsx;
+  }
+
+
+  getPlaceholderControl = () => {
+    let jsx = '';
+    if (this.props.control && this.props.control.get('placeholder') !== undefined) {
+      jsx = (
+        <div className='element-editor-item'>
+          <div className='element-editor-item__title'>Placeholder:</div>
+          <Input
+            className='element-editor-item__control'
+            defaultValue={this.props.control.get('placeholder')}
           />
         </div>
       );
@@ -64,7 +81,7 @@ export default class ElementEditor extends React.Component {
       { value: 'post', label: 'POST' },
     ];
 
-    if (this.props.control && this.props.control.get('method')) {
+    if (this.props.control && this.props.control.get('method') !== undefined) {
       jsx = (
         <div className='element-editor-item'>
           <div className='element-editor-item__title'>Method:</div>
@@ -85,6 +102,7 @@ export default class ElementEditor extends React.Component {
       <div>
         {this.getNameControl()}
         {this.getMethodControl()}
+        {this.getPlaceholderControl()}
       </div>
     );
   }

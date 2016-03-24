@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import Input from 'components/Input';
-import MaterialInput from 'components/MaterialInput';
 import './styles.scss';
 
 export default class StyleEditor extends React.Component {

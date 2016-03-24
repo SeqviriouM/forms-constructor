@@ -6,7 +6,6 @@ import * as actionsForm from 'actions/form';
 import * as currentControlIdActions from 'actions/currentControlId';
 import Element from 'components/Element';
 import MaterialInput from 'components/MaterialInput';
-import Button from 'components/Button';
 import './styles.scss';
 
 

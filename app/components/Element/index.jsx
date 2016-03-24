@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Motion, spring } from 'react-motion';
 import store from 'store';
 import cx from 'classnames';
 import * as actionsForm from 'actions/form';
@@ -59,6 +58,7 @@ export default class ElementsContainer extends React.Component {
       console.log('Choose component where add control');
     }
   }
+
 
   render() {
     let renderTemplate;

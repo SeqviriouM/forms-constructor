@@ -62,7 +62,7 @@ export default class Form extends React.Component {
 
 
   getFormComponents() {
-    return this.props.form.get('components').toJS().map((item, index) => {
+    return this.props.form.get('components').toJS().map((item /* , index */) => {
       const style = this.state.lastPressed === item.id && this.state.isPressed
         ? {
           scale: spring(1.1, springConfig),
