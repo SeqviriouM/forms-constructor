@@ -2,6 +2,7 @@
 
 var path = require('path');
 var webpack = require('webpack');
+var autoprefixer = require('autoprefixer');
 var loadersByExtension = require('./utils/loadersByExtension.js');
 
 var loadersByExt = loadersByExtension({
@@ -61,7 +62,7 @@ module.exports = function MakeDefaultConfig(options) {
                 },
                 {
                     test: /\.css$/,
-                    loader: 'style!css!',
+                    loader: 'style!css!postcss',
                 },
                 {
                     test: /\.styl$/,
@@ -69,7 +70,7 @@ module.exports = function MakeDefaultConfig(options) {
                 },
                 {
                     test: /\.scss$/,
-                    loader: 'style!css!sass',
+                    loader: 'style!css!postcss!sass',
                 },
                 {
                     test: /^((?!inline).)*\.svg$/,
@@ -80,6 +81,7 @@ module.exports = function MakeDefaultConfig(options) {
                     loader: 'svg-inline?removeSVGTagAttrs=false',
                 },
             ]),
+            postcss: [ autoprefixer ],
         },
     };
 

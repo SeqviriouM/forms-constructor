@@ -21,6 +21,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "autoprefixer": "^6.3.5",
     "babel-eslint": "^4.1.8",
     "babel-loader": "^6.2.2",
     "babel-plugin-react-transform": "^2.0.0",
@@ -57,6 +58,7 @@
     "express": "^4.13.4",
     "history": "^2.0.0",
     "immutable": "^3.7.6",
+    "mongoose": "^4.4.9",
     "node-sass": "^3.4.2",
     "npm": "^3.7.3",
     "postcss-loader": "^0.8.1",
