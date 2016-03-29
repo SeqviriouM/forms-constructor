@@ -6,6 +6,7 @@ import Tabs from 'components/Tabs';
 import Tab from 'components/Tab';
 import TabPanel from 'components/TabPanel';
 import TabContent from 'components/TabContent';
+import ConfigEditor from 'components/ConfigEditor';
 import StyleEditor from 'components/StyleEditor';
 import './styles.scss';
 
@@ -130,12 +131,7 @@ export default class ElementEditor extends React.Component {
         </Tabs>
         <TabContent currentTabId={this.state.currentTabId}>
           <TabPanel id={1}>
-            <div className='element-editor__title'>
-              {this.getTitle()}
-            </div>
-            <div className='element-editor__content'>
-              {this.getElementContent()}
-            </div>
+            <ConfigEditor config={this.props.control.get('config')} />
           </TabPanel>
           <TabPanel id={2}>
             <StyleEditor />
