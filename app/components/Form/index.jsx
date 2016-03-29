@@ -158,8 +158,8 @@ export default class Form extends React.Component {
         <div className='form-wrapper'>
           <form
             className='form'
-            name={form.get('name')}
-            action={form.get('method')}
+            name={form.get('config').get('name')}
+            action={form.get('config').get('method')}
           >
             <a className='form__edit' onClick={this.props.toggleRightSidebar}>
               <svg
@@ -178,7 +178,7 @@ export default class Form extends React.Component {
               </svg>
             </a>
             <div className='form__title'>
-              <MaterialInput defaultValue={this.props.form.get('title')} />
+              <MaterialInput defaultValue={this.props.form.get('config').get('title')} />
             </div>
             <div className='form__components'>
               {this.getFormComponents()}

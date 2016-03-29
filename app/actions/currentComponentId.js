@@ -1,4 +1,4 @@
-export function setControlId(data) {
+export function setComponentId(data) {
   return {
     type: 'SET',
     payload: data,

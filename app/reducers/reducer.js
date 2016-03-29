@@ -1,10 +1,10 @@
 import { routerStateReducer } from 'redux-router';
 import { combineReducers } from 'redux';
 import { form } from './form';
-import { currentControlId } from './currentControlId';
+import { currentComponentId } from './currentComponentId';
 
 export const appReducer = combineReducers({
   router: routerStateReducer,
   form,
-  currentControlId,
+  currentComponentId,
 });

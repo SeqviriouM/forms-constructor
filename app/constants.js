@@ -10,47 +10,62 @@ const DEFAULT_CONTROL_STYLE = {
 
 const CONTROLS = {
   INPUT: {
-    name: 'defaultName',
-    placeholder: '',
-    size: 'm',
+    config: {
+      name: 'defaultName',
+      placeholder: '',
+      size: 'm',
+    },
     style: DEFAULT_CONTROL_STYLE,
   },
   SELECT: {
-    name: 'defaultName',
-    placeholder: '',
-    size: 'm',
+    config: {
+      name: 'defaultName',
+      placeholder: '',
+      size: 'm',
+    },
     style: DEFAULT_CONTROL_STYLE,
   },
   DATEPICKER: {
-    name: 'defaultName',
-    placeholder: '',
-    size: 'm',
+    config: {
+      name: 'defaultName',
+      placeholder: '',
+      size: 'm',
+    },
     style: DEFAULT_CONTROL_STYLE,
   },
   LABEL: {
-    name: 'defaultName',
-    placeholder: '',
-    size: 'm',
+    config: {
+      name: 'defaultName',
+      placeholder: '',
+      size: 'm',
+    },
     style: DEFAULT_CONTROL_STYLE,
   },
   CHECKBOX: {
-    name: 'defaultName',
-    placeholder: '',
-    size: 'm',
+    config: {
+      name: 'defaultName',
+      placeholder: '',
+      size: 'm',
+    },
     style: DEFAULT_CONTROL_STYLE,
   },
   RADIO: {
-    name: 'defaultName',
-    placeholder: '',
-    size: 'm',
+    config: {
+      name: 'defaultName',
+      placeholder: '',
+      size: 'm',
+    },
     style: DEFAULT_CONTROL_STYLE,
   },
 };
 
 const FORM = new Map({
-  name: 'form',
-  method: 'get',
-  title: 'Form',
+  config: Map({
+    name: 'form',
+    method: 'get',
+    title: 'Form',
+  }),
+  style: Map(),
   components: List(),
 });
 

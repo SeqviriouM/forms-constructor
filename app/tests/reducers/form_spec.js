@@ -20,9 +20,12 @@ describe('form reducer', () => {
 
     expect(nextState).to.equal(Map(
       {
-        name: 'form',
-        method: 'get',
-        title: 'Form',
+        config: Map({
+          name: 'form',
+          method: 'get',
+          title: 'Form',
+        }),
+        style: Map(),
         components: List.of(Map({
           id: 0,
           title: 'Default title',
@@ -35,9 +38,12 @@ describe('form reducer', () => {
 
   it('handle DELETE_COMPONENT', () => {
     const initialState = Map({
-      name: 'form',
-      method: 'get',
-      title: 'Form',
+      config: Map({
+        name: 'form',
+        method: 'get',
+        title: 'Form',
+      }),
+      style: Map(),
       components: List.of(
         Map({
           id: 0,
@@ -55,9 +61,12 @@ describe('form reducer', () => {
     const nextState = form(initialState, deleteComponent({ id: 0 }));
 
     expect(nextState).to.equal(Map({
-      name: 'form',
-      method: 'get',
-      title: 'Form',
+      config: Map({
+        name: 'form',
+        method: 'get',
+        title: 'Form',
+      }),
+      style: Map(),
       components: List.of(
         Map({
           id: 0,
@@ -77,9 +86,12 @@ describe('form reducer', () => {
 
   it('handle CANCEL_DELETION_COMPONENT', () => {
     const initialState = Map({
-      name: 'form',
-      method: 'get',
-      title: 'Form',
+      config: Map({
+        name: 'form',
+        method: 'get',
+        title: 'Form',
+      }),
+      style: Map(),
       components: List.of(
         Map({
           id: 0,
@@ -99,9 +111,12 @@ describe('form reducer', () => {
     const nextState = form(initialState, cancelDeletionComponent({ id: 0 }));
 
     expect(nextState).to.equal(Map({
-      name: 'form',
-      method: 'get',
-      title: 'Form',
+      config: Map({
+        name: 'form',
+        method: 'get',
+        title: 'Form',
+      }),
+      style: Map(),
       components: List.of(
         Map({
           id: 0,
@@ -122,9 +137,12 @@ describe('form reducer', () => {
 
   it('handle UPDATE_COMPONENTS', () => {
     const initialState = Map({
-      name: 'form',
-      method: 'get',
-      title: 'Form',
+      config: Map({
+        name: 'form',
+        method: 'get',
+        title: 'Form',
+      }),
+      style: Map(),
       components: List.of(
         Map({
           id: 0,
@@ -159,9 +177,12 @@ describe('form reducer', () => {
     const nextState = form(initialState, updateComponents({ components: newComponentsOrder }));
 
     expect(nextState).to.equal(Map({
-      name: 'form',
-      method: 'get',
-      title: 'Form',
+      config: Map({
+        name: 'form',
+        method: 'get',
+        title: 'Form',
+      }),
+      style: Map(),
       components: List.of(
         Map({
           id: 1,

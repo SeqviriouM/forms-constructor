@@ -3,7 +3,7 @@ import { Motion, spring } from 'react-motion';
 import cx from 'classnames';
 import store from 'store';
 import * as actionsForm from 'actions/form';
-import * as currentControlIdActions from 'actions/currentControlId';
+import * as currentComponentIdActions from 'actions/currentComponentId';
 import Element from 'components/Element';
 import MaterialInput from 'components/MaterialInput';
 import './styles.scss';
@@ -41,7 +41,7 @@ export default class Form extends React.Component {
 
 
   setCurrentComponent = (e) => {
-    store.dispatch(currentControlIdActions.setControlId({
+    store.dispatch(currentComponentIdActions.setComponentId({
       currentId: parseInt(e.currentTarget.dataset.id, 10),
     }));
   }
@@ -61,8 +61,8 @@ export default class Form extends React.Component {
   }
 
 
-  editControl = (e) => {
-    store.dispatch(currentControlIdActions.setControlId({
+  editComponent = (e) => {
+    store.dispatch(currentComponentIdActions.setComponentId({
       currentId: parseInt(e.currentTarget.dataset.id, 10),
     }));
     this.props.toggleRightSidebar(arguments);
@@ -72,7 +72,7 @@ export default class Form extends React.Component {
   render() {
     const classes = cx('component', {
       component_deleted: this.props.item.isDeleted,
-      component_active: this.props.item.id === store.getState().currentControlId,
+      component_active: this.props.item.id === store.getState().currentComponentId,
     }, this.props.className);
 
     return (
@@ -97,7 +97,7 @@ export default class Form extends React.Component {
           {interpolated => <div
             className='component__edit'
             data-id={this.props.item.id}
-            onClick={this.editControl}
+            onClick={this.editComponent}
             style={{ transform: `translateX(${interpolated.x}px)` }}
           >
             <svg

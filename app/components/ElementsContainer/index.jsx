@@ -12,15 +12,17 @@ export default class ElementsContainer extends React.Component {
   addControlToForm = (e) => {
     const targetType = e.currentTarget.dataset.type;
 
-    if (store.getState().currentControlId !== -1) {
+    if (store.getState().currentComponentId !== -1) {
       store.dispatch(actionsForm.addControl({
         control: {
           type: targetType,
-          name: 'name',
-          size: '',
-          placeholder: '',
+          config: {
+            name: 'name',
+            size: '',
+            placeholder: '',
+          },
         },
-        currentId: store.getState().currentControlId,
+        currentId: store.getState().currentComponentId,
       }));
     } else {
       console.log('Choose component where add control');

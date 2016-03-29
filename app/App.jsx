@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import DocumentTitle from 'react-document-title';
 import BurgerMenu from 'react-burger-menu';
-import { currentControlSelector } from 'selectors/currentControlSelector';
+import { currentControlSelector } from './selectors/currentControlSelector';
 import Header from 'components/Header';
 import ElementsContainer from 'components/ElementsContainer';
 import ElementEditor from 'components/ElementEditor';
@@ -12,13 +12,13 @@ import 'styles/main.scss';
 
 @connect(state => ({
   form: state.form,
-  currentControlId: -1,
+  currentComponentId: state.currentComponentId,
   currentControl: currentControlSelector(state),
 }))
 export default class Application extends React.Component {
   static propTypes = {
     form: PropTypes.instanceOf(Map).isRequired,
-    currentControlId: PropTypes.number,
+    currentComponentId: PropTypes.number,
     currentControl: PropTypes.instanceOf(Map).isRequired,
   }
 
