@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import store from 'store';
+import { connect } from 'react-redux';
 import * as actionsForm from 'actions/form';
 import Element from 'components/Element';
 import './styles.scss';
 
+@connect(state => ({
+  currentComponentId: state.currentComponentId,
+}))
 export default class ElementsContainer extends React.Component {
+
+  static propTypes = {
+    currentComponentId: PropTypes.number,
+  }
+
+
   constructor(props) {
     super(props);
   }
@@ -12,7 +22,7 @@ export default class ElementsContainer extends React.Component {
   addControlToForm = (e) => {
     const targetType = e.currentTarget.dataset.type;
 
-    if (store.getState().currentComponentId !== -1) {
+    if (this.props.currentComponentId !== -1) {
       store.dispatch(actionsForm.addControl({
         control: {
           type: targetType,
@@ -22,7 +32,7 @@ export default class ElementsContainer extends React.Component {
             placeholder: '',
           },
         },
-        currentId: store.getState().currentComponentId,
+        currentId: this.props.currentComponentId,
       }));
     } else {
       console.log('Choose component where add control');

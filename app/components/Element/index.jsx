@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import store from 'store';
+import { connect } from 'react-redux';
 import cx from 'classnames';
 import * as actionsForm from 'actions/form';
 import Input from 'components/Input';
@@ -10,9 +11,13 @@ import Checkbox from 'components/checkbox';
 import Radio from 'components/radio';
 import './styles.scss';
 
+@connect(state => ({
+  currentComponentId: state.currentComponentId,
+}))
 export default class ElementsContainer extends React.Component {
 
   static propTypes = {
+    currentComponentId: PropTypes.number,
     type: PropTypes.string.isRequired,
     className: PropTypes.string,
   }
@@ -43,7 +48,7 @@ export default class ElementsContainer extends React.Component {
   addControlToForm = (e) => {
     const targetType = e.currentTarget.dataset.type;
 
-    if (store.getState().currentComponentId !== -1) {
+    if (this.props.currentComponentId !== -1) {
       store.dispatch(actionsForm.addControl({
         control: {
           name: 'name',
@@ -52,7 +57,7 @@ export default class ElementsContainer extends React.Component {
           placeholder: '',
           type: targetType,
         },
-        currentId: store.getState().currentComponentId,
+        currentId: this.props.currentComponentId,
       }));
     } else {
       console.log('Choose component where add control');
