@@ -3,6 +3,7 @@ import http from 'http';
 import path from 'path';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import startSocketServer from './socket.js';
 
 const app = express();
 const server = http.createServer(app);
@@ -33,6 +34,8 @@ if (isDev && isDebug && process.env.DEBUG.indexOf('shrimp:front') === 0) {
 
 app.use(bodyParser.json());
 app.use(cookieParser());
+
+startSocketServer(server);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../app/root.html'));

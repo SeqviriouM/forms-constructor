@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import DocumentTitle from 'react-document-title';
 import BurgerMenu from 'react-burger-menu';
+import cookies from 'browser-cookies';
 import { currentControlSelector } from './selectors/currentControlSelector';
+import { startSocketClient } from './core/socket';
 import Header from 'components/Header';
 import ElementsContainer from 'components/ElementsContainer';
 import ElementEditor from 'components/ElementEditor';
@@ -29,6 +31,16 @@ export default class Application extends React.Component {
       sidebarRightOpen: false,
       sidebarLeftOpen: false,
     };
+  }
+
+
+  componentWillMount = () => {
+    const sessionId = cookies.get('sessionId');
+    if (sessionId) {
+      console.log('sessionId: ', sessionId);
+    } else {
+      startSocketClient();
+    }
   }
 
 
