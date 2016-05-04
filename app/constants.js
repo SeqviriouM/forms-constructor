@@ -74,8 +74,23 @@ const COMPONENT = {
   formControl: Map(),
 };
 
+// Client - Server
+const CS = {
+};
+
+// Server - Client
+const SC = {
+};
+
+// Action
+const A = {
+};
+
 module.exports = {
   FORM,
   COMPONENT,
   CONTROLS,
+  CS,
+  SC,
+  A,
 };

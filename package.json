@@ -17,7 +17,7 @@
     "lint": "npm run lint-ci --silent; exit 0;",
     "test-client": "mocha --compilers js:babel-core/register --recursive ./app/tests",
     "test": "npm run test-client",
-    "dev": "NODE_ENV=development DEBUG=shrimp:front NODE_PATH=./node_modules:./app nodemon --watch server/ --exec babel-node server/server"
+    "dev": "NODE_ENV=development MONGO_CONNECT=yes DEBUG=shrimp:front NODE_PATH=./node_modules:./app nodemon --watch server/ --exec babel-node server/server"
   },
   "license": "MIT",
   "devDependencies": {

@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 
-export function startSocketClient() {
+export default function () {
   const socket = io();
 
   socket.on('INITED', (data) => {

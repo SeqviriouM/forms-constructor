@@ -1,16 +1,21 @@
 import express from 'express';
 import http from 'http';
 import path from 'path';
+import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import startSocketServer from './socket.js';
+import attachRoutes from './router';
+import getConfig from './config.js';
 
 const app = express();
 const server = http.createServer(app);
 const port = process.env.PORT || 3000;
+const env = process.env.NODE_ENV;
 const isDev = process.env.NODE_ENV === 'development';
 const isDebug = process.env.DEBUG;
-
+const isMongoConnect = process.env.MONGO_CONNECT;
+const appConfig = getConfig();
 
 if (isDev && isDebug && process.env.DEBUG.indexOf('shrimp:front') === 0) {
   const webpack = require('webpack');
@@ -36,17 +41,14 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 startSocketServer(server);
+attachRoutes(app);
+
+if (isMongoConnect === 'yes') {
+  mongoose.connect(appConfig.db[env]);
+}
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../app/root.html'));
-});
-
-app.post('/login', (req, res) => {
-  res.send({ status: 'OK' });
-});
-
-app.post('/signup', (req, res) => {
-  res.send({ status: 'OK' });
 });
 
 server.listen(port);

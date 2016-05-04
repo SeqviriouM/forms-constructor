@@ -5,7 +5,7 @@ import DocumentTitle from 'react-document-title';
 import BurgerMenu from 'react-burger-menu';
 import cookies from 'browser-cookies';
 import { currentControlSelector } from './selectors/currentControlSelector';
-import { startSocketClient } from './core/socket';
+import startSocketClient from 'core/socket';
 import Header from 'components/Header';
 import ElementsContainer from 'components/ElementsContainer';
 import ElementEditor from 'components/ElementEditor';
@@ -38,7 +38,9 @@ export default class Application extends React.Component {
     const sessionId = cookies.get('sessionId');
     if (sessionId) {
       console.log('sessionId: ', sessionId);
+      startSocketClient();
     } else {
+      // store.history.pushState(null, '/login');
       startSocketClient();
     }
   }
