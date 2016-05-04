@@ -17,6 +17,7 @@ rules:
   jsx-quotes: [2, 'prefer-single']
   max-len: [1, 100, 2]
   id-length: 0
+  no-param-reassign: [1, { "props": false }]
   new-cap: [2, { "capIsNewExceptions": [
     "List",
     "Map",
