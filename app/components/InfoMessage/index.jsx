@@ -93,7 +93,7 @@ export default class InfoMessage extends React.Component {
     return (
       <div className={classes}>
         <Motion
-          defaultStyle={{ x: spring(0) }}
+          defaultStyle={{ x: 0 }}
           style={{ x: spring(this.state.changing ? 100 : 0, { stiffness: 1000, damping: 100 }) }}
         >
           {(interpolated) => getMessageText(interpolated)}
