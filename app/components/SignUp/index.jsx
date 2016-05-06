@@ -89,7 +89,6 @@ export default class SignUp extends React.Component {
     const signUpData = {
       email,
       password,
-      repeatedPassword,
     };
 
     this.setState({
@@ -106,6 +105,7 @@ export default class SignUp extends React.Component {
     }).then((res) => {
       if (res.status === 200) {
         res.json().then(() => {
+          debugger;
           store.history.pushState(null, '/');
         });
       }
@@ -115,6 +115,10 @@ export default class SignUp extends React.Component {
 
   checkEmailExist = (email) => {
     this.setState({
+      info: {
+        type: 'info',
+        text: 'Fill these fields',
+      },
       showEmailError: false,
       email,
     });
@@ -141,13 +145,11 @@ export default class SignUp extends React.Component {
   passwordChange = (e) => {
     const password = e.target.value;
 
-    if (password.length) {
-      this.setState({
-        password,
-        showPasswordError: false,
-        showRepeatedPasswordError: false,
-      });
-    }
+    this.setState({
+      password,
+      showPasswordError: false,
+      showRepeatedPasswordError: false,
+    });
   }
 
 
@@ -181,19 +183,18 @@ export default class SignUp extends React.Component {
               input_type_error: this.state.showEmailError,
               input_type_success: !this.state.showEmailError && this.state.email,
             })}
-            value={this.state.email}
             placeholder='Email'
             onChange={this.emailChange}
           />
           <Input
             className='sign-up__input'
-            value={this.state.password}
+            type='password'
             placeholder='Password'
             onChange={this.passwordChange}
           />
           <Input
             className='sign-up__input'
-            value={this.state.repeatedPassword}
+            type='password'
             placeholder='Repeat password'
             onChange={this.repeatedPasswordChange}
           />
