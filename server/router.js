@@ -11,7 +11,7 @@ export default function (app) {
       if (userData.status.type === 'success') {
         const sessionId = generateSessionId();
         setSessionId(userData.userId, sessionId, () => {
-          res.send({ status: 'OK' });
+          res.send({ sessionId });
         });
       } else {
         res.json({ user: userData });

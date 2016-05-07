@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
+import store from 'store';
 import DocumentTitle from 'react-document-title';
 import BurgerMenu from 'react-burger-menu';
 import cookies from 'browser-cookies';
@@ -36,12 +37,12 @@ export default class Application extends React.Component {
 
   componentWillMount = () => {
     const sessionId = cookies.get('sessionId');
+
     if (sessionId) {
       console.log('sessionId: ', sessionId);
       startSocketClient();
     } else {
-      // store.history.pushState(null, '/login');
-      startSocketClient();
+      store.history.pushState(null, '/login');
     }
   }
 

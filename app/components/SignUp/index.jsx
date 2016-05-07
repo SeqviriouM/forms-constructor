@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import store from 'store';
+import cookies from 'browser-cookies';
 import InfoMessage from 'components/InfoMessage';
 import Input from 'components/Input';
 import Button from 'components/Button';
@@ -104,8 +105,9 @@ export default class SignUp extends React.Component {
       body: JSON.stringify(signUpData),
     }).then((res) => {
       if (res.status === 200) {
-        res.json().then(() => {
+        res.json().then((data) => {
           debugger;
+          cookies.set('sessionId', data.sessionId, { expires: 365 });
           store.history.pushState(null, '/');
         });
       }
