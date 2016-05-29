@@ -3,6 +3,8 @@
 
 .config-editor {
 
+  padding: 5px 7px;
+
   &__title {
     margin: 11px 0;
     text-align: center;
@@ -20,6 +22,40 @@
 
     &__title {
       padding: 7px 0;
+    }
+  }
+
+  &-option {
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.1);
+
+    &__item {
+      margin: 5px 0;
+      box-sizing: border-box;
+    }
+
+    &__title {
+      width: 70px;
+      display: inline-block;
+      padding: 7px 0;
+      font-size: 14px;
+    }
+
+    &__control {
+      width: calc(100% - 70px);
+    }
+
+    &__add {
+      text-align: center;
+      background: rgba(0,0,0,0.1);
+      padding: 10px 0;
+      border: 1px solid white;
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(0,0,0,0.3);
+      }
     }
   }
 }

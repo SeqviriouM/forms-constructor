@@ -3,6 +3,7 @@ import store from 'store';
 import { connect } from 'react-redux';
 import * as actionsForm from 'actions/form';
 import Element from 'components/Element';
+import { CONTROLS } from 'constants';
 import './styles.scss';
 
 @connect(state => ({
@@ -20,18 +21,11 @@ export default class ElementsContainer extends React.Component {
   }
 
   addControlToForm = (e) => {
-    const targetType = e.currentTarget.dataset.type;
+    const targetType = e.currentTarget.dataset.type.toUpperCase();
 
     if (this.props.currentComponentId !== -1) {
       store.dispatch(actionsForm.addControl({
-        control: {
-          type: targetType,
-          config: {
-            name: 'name',
-            size: '',
-            placeholder: '',
-          },
-        },
+        control: CONTROLS[targetType],
         currentId: this.props.currentComponentId,
       }));
     } else {
@@ -58,26 +52,6 @@ export default class ElementsContainer extends React.Component {
           <div
             className='element-container__add'
             data-type='select'
-            onClick={this.addControlToForm}
-          >
-            <span> + </span>
-          </div>
-        </div>
-        <div className='element-container__item'>
-          <Element type='datepicker' />
-          <div
-            className='element-container__add'
-            data-type='datepicker'
-            onClick={this.addControlToForm}
-          >
-            <span> + </span>
-          </div>
-        </div>
-        <div className='element-container__item'>
-          <Element type='label' />
-          <div
-            className='element-container__add'
-            data-type='label'
             onClick={this.addControlToForm}
           >
             <span> + </span>

@@ -7,9 +7,10 @@ import Input from 'components/Input';
 import Select from 'components/Select';
 import Datepicker from 'components/Datepicker';
 import Label from 'components/Label';
-import Checkbox from 'components/checkbox';
-import Radio from 'components/radio';
+import Checkbox from 'components/Checkbox';
+import Radio from 'components/Radio';
 import './styles.scss';
+import { CONTROLS } from 'constants';
 
 @connect(state => ({
   currentComponentId: state.currentComponentId,
@@ -20,6 +21,7 @@ export default class ElementsContainer extends React.Component {
     currentComponentId: PropTypes.number,
     type: PropTypes.string.isRequired,
     className: PropTypes.string,
+    item: PropTypes.object,
   }
 
 
@@ -46,17 +48,11 @@ export default class ElementsContainer extends React.Component {
 
 
   addControlToForm = (e) => {
-    const targetType = e.currentTarget.dataset.type;
+    const targetType = e.currentTarget.dataset.type.toUpperCase();
 
     if (this.props.currentComponentId !== -1) {
       store.dispatch(actionsForm.addControl({
-        control: {
-          name: 'name',
-          title: '',
-          size: '',
-          placeholder: '',
-          type: targetType,
-        },
+        control: CONTROLS[targetType],
         currentId: this.props.currentComponentId,
       }));
     } else {
@@ -74,7 +70,11 @@ export default class ElementsContainer extends React.Component {
         <div
           className={classes}
         >
-          <Input className='element__input' />
+          <Input
+            className='element__input'
+            name={this.props.item ? this.props.item.formControl.config.name : ''}
+            placeholder={this.props.item ? this.props.item.formControl.config.placeholder : ''}
+          />
         </div>
       );
     } else if (this.props.type === 'select') {
@@ -108,7 +108,10 @@ export default class ElementsContainer extends React.Component {
         <div
           className={classes}
         >
-          <Checkbox className='element__checkbox' />
+          <Checkbox
+            className='element__checkbox'
+            options={this.props.item ? this.props.item.formControl.config.options : ''}
+          />
         </div>
       );
     } else if (this.props.type === 'radio') {
@@ -116,7 +119,10 @@ export default class ElementsContainer extends React.Component {
         <div
           className={classes}
         >
-          <Radio className='element__radio' />
+          <Radio
+            className='element__radio'
+            options={this.props.item ? this.props.item.formControl.config.options : ''}
+          />
         </div>
       );
     }

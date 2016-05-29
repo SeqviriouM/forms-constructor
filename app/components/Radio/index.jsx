@@ -9,23 +9,32 @@ export default class Radio extends React.Component {
     className: PropTypes.string,
   }
 
+
+  getOptions = () => {
+    const options = this.props.options ? this.props.options : [
+      { value: 'option1', label: 'Option 1', id: 0 },
+      { value: 'option2', label: 'Option 2', id: 1 }
+    ];
+
+    return options.map((item) => {
+      return (
+        <div className='radio__element-wrapper'>
+          <input name={item.value} type='radio' className='radio__option'/>
+          <label className='radio__label'>
+            {item.label}
+          </label>
+        </div>
+      );
+    });
+  }
+
+
   render() {
     const classes = cx('radio', this.props.className);
 
     return (
       <div className='radio-container'>
-        <div className='radio__element-wrapper'>
-          <input name='radio' type='radio' {...this.props} className={classes} />
-          <label>
-            Option 1
-          </label>
-        </div>
-        <div className='radio__element-wrapper'>
-          <input name='radio' type='radio' {...this.props} className={classes} />
-          <label>
-            Option 2
-          </label>
-        </div>
+        {this.getOptions()}
       </div>
     );
   }

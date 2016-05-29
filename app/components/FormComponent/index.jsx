@@ -25,7 +25,7 @@ export default class Form extends React.Component {
   getControl() {
     let jsx = '';
     if (Object.keys(this.props.item.formControl).length > 0) {
-      jsx = <Element type={this.props.item.formControl.type} />;
+      jsx = <Element type={this.props.item.formControl.type} item={this.props.item} />;
     } else {
       jsx = (
         <div

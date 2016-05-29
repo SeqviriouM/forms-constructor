@@ -19,10 +19,12 @@ export default class Select extends React.Component {
       sidebarOpen: true,
     };
   }
-
-  shouldComponentUpdate() {
-    return false;
-  }
+  //
+  // shouldComponentUpdate() {
+  //   debugger;
+  //   return true;
+  //   // return false;
+  // }
 
 
   getOptions() {
@@ -42,6 +44,8 @@ export default class Select extends React.Component {
         value={value}
         options={options}
         className={classes}
+        onChange={this.props.onChange}
+        data-type={this.props['data-type']}
       />
     );
   }

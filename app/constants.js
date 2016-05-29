@@ -10,22 +10,25 @@ const DEFAULT_CONTROL_STYLE = {
 
 const CONTROLS = {
   INPUT: {
+    type: 'input',
     config: {
       name: 'defaultName',
       placeholder: '',
       size: 'm',
+      type: ''
     },
     style: DEFAULT_CONTROL_STYLE,
   },
   SELECT: {
+    type: 'select',
     config: {
       name: 'defaultName',
-      placeholder: '',
       size: 'm',
     },
     style: DEFAULT_CONTROL_STYLE,
   },
   DATEPICKER: {
+    type: 'datepicker',
     config: {
       name: 'defaultName',
       placeholder: '',
@@ -34,6 +37,7 @@ const CONTROLS = {
     style: DEFAULT_CONTROL_STYLE,
   },
   LABEL: {
+    type: 'label',
     config: {
       name: 'defaultName',
       placeholder: '',
@@ -42,18 +46,28 @@ const CONTROLS = {
     style: DEFAULT_CONTROL_STYLE,
   },
   CHECKBOX: {
+    type: 'checkbox',
     config: {
       name: 'defaultName',
-      placeholder: '',
       size: 'm',
+      lastOptionId: 1,
+      options: [
+        { value: 'option1', label: 'Option 1', id: 0 },
+        { value: 'option2', label: 'Option 2', id: 1 }
+      ]
     },
     style: DEFAULT_CONTROL_STYLE,
   },
   RADIO: {
+    type: 'radio',
     config: {
       name: 'defaultName',
-      placeholder: '',
       size: 'm',
+      lastRadioId: 1,
+      options: [
+        { value: 'option1', label: 'Option 1', id: 0 },
+        { value: 'option2', label: 'Option 2', id: 1 }
+      ]
     },
     style: DEFAULT_CONTROL_STYLE,
   },
@@ -74,6 +88,11 @@ const COMPONENT = {
   formControl: Map(),
 };
 
+const OPTION = {
+  value: '',
+  label: 'Option',
+};
+
 // Client - Server
 const CS = {
 };
@@ -90,6 +109,7 @@ module.exports = {
   FORM,
   COMPONENT,
   CONTROLS,
+  OPTION,
   CS,
   SC,
   A,

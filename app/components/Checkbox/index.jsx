@@ -6,26 +6,36 @@ import './styles.scss';
 export default class Checkbox extends React.Component {
 
   static propTypes = {
+    options: PropTypes.array,
     className: PropTypes.string,
   }
+
+
+  getOptions = () => {
+    const options = this.props.options ? this.props.options : [
+      { value: 'option1', label: 'Option 1', id: 0 },
+      { value: 'option2', label: 'Option 2', id: 1 }
+    ];
+
+    return options.map((item) => {
+      return (
+        <div className='checkbox__element-wrapper'>
+          <input name={item.value} type='checkbox' className='checkbox__option'/>
+          <label className='checkbox__label'>
+            {item.label}
+          </label>
+        </div>
+      );
+    });
+  }
+
 
   render() {
     const classes = cx('checkbox', this.props.className);
 
     return (
       <div className='checkbox-container'>
-        <div className='checkbox__element-wrapper'>
-          <input name='checkbox' type='checkbox' {...this.props} className={classes} />
-          <label>
-            Option 1
-          </label>
-        </div>
-        <div className='checkbox__element-wrapper'>
-          <input name='checkbox' type='checkbox' {...this.props} className={classes} />
-          <label>
-            Option 2
-          </label>
-        </div>
+        {this.getOptions()}
       </div>
     );
   }

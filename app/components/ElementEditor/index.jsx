@@ -49,7 +49,9 @@ export default class ElementEditor extends React.Component {
         </Tabs>
         <TabContent currentTabId={this.state.currentTabId}>
           <TabPanel id={1}>
-            <ConfigEditor config={this.props.control.get('config')} />
+            <ConfigEditor
+              type={this.props.control.type}
+              config={this.props.control.data.get('config')} />
           </TabPanel>
           <TabPanel id={2}>
             <StyleEditor />

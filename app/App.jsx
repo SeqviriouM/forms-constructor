@@ -39,7 +39,6 @@ export default class Application extends React.Component {
     const sessionId = cookies.get('sessionId');
 
     if (sessionId) {
-      console.log('sessionId: ', sessionId);
       startSocketClient();
     } else {
       store.history.pushState(null, '/login');
@@ -81,8 +80,8 @@ export default class Application extends React.Component {
 
   render() {
     const { form } = this.props;
-    const ElasticMenu = BurgerMenu.elastic;
-    const StackMenu = BurgerMenu.stack;
+    const ElasticMenu = BurgerMenu.slide;
+    const StackMenu = BurgerMenu.slide;
 
     return (
       <DocumentTitle title='Form Constructor'>

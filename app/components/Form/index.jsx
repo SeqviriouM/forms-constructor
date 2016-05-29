@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Map, is, fromJS } from 'immutable';
 import { Motion, spring } from 'react-motion';
 import store from 'store';
+import * as actionsLocal from 'actions/currentComponentId';
 import * as actionsForm from 'actions/form';
 import MaterialInput from 'components/MaterialInput';
 import FormComponent from 'components/FormComponent';
@@ -150,6 +151,24 @@ export default class Form extends React.Component {
   }
 
 
+  formEdit = () => {
+    store.dispatch(actionsLocal.setComponentId({ currentId: -1 }));
+
+    this.props.toggleRightSidebar();
+  }
+
+
+  formConfigChange = (e) => {
+    const value = e.target.value;
+    const type = e.target.getAttribute('data-type');
+
+    store.dispatch(actionsForm.updateFormConfig({
+      type,
+      value,
+    }));
+  }
+
+
   render() {
     const { form } = this.props;
 
@@ -161,7 +180,7 @@ export default class Form extends React.Component {
             name={form.get('config').get('name')}
             action={form.get('config').get('method')}
           >
-            <a className='form__edit' onClick={this.props.toggleRightSidebar}>
+            <a className='form__edit' onClick={this.formEdit}>
               <svg
                 aria-hidden='true'
                 className='pencil'
@@ -178,7 +197,11 @@ export default class Form extends React.Component {
               </svg>
             </a>
             <div className='form__title'>
-              <MaterialInput defaultValue={this.props.form.get('config').get('title')} />
+              <MaterialInput
+                defaultValue={this.props.form.get('config').get('title')}
+                onChange = {this.formConfigChange}
+                data-type="title"
+              />
             </div>
             <div className='form__components'>
               {this.getFormComponents()}

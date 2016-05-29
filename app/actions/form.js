@@ -36,10 +36,37 @@ export function updateComponents(data) {
   };
 }
 
+export function updateComponent(data) {
+  return {
+    type: 'UPDATE_COMPONENT',
+    payload: data
+  };
+}
 
 export function addControl(data) {
   return {
     type: 'ADD_CONTROL',
     payload: data,
   };
+}
+
+export function updateFormConfig(data) {
+  return {
+    type: 'UPDATE_FORM_CONFIG',
+    payload: data,
+  };
+}
+
+export function addOption(data) {
+  return {
+    type: 'ADD_OPTION',
+    payload: data,
+  }
+}
+
+export function updateOption(data) {
+  return {
+    type: 'UPDATE_OPTION',
+    payload: data,
+  }
 }
