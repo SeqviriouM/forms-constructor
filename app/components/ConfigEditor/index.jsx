@@ -19,7 +19,6 @@ export default class ConfigEditor extends React.Component {
     currentComponentId: PropTypes.number,
     type: PropTypes.string.isRequired,
     config: PropTypes.instanceOf(Map).isRequired,
-    title: PropTypes.string,
   }
 
 
@@ -62,12 +61,6 @@ export default class ConfigEditor extends React.Component {
     if (this.props.config && this.props.config.get('title')) {
       jsx = (
         <span>{this.props.config.get('title')}</span>
-      );
-    }
-
-    if (this.props.title) {
-      jsx = (
-        <span>{this.props.title}</span>
       );
     }
 
@@ -139,6 +132,26 @@ export default class ConfigEditor extends React.Component {
   }
 
 
+  getLabelControl = () => {
+    let jsx = '';
+
+    if (this.props.config && this.props.config.get('label') !== undefined) {
+      jsx = (
+        <div className='config-editor-item'>
+          <div className='config-editor-item__title'>Label:</div>
+          <Input
+            className='config-editor-item__control'
+            value={this.props.config.get('label')}
+            data-type="label"
+            onChange = {this.configChange}
+          />
+        </div>
+      );
+    }
+    return jsx;
+  }
+
+
   optionChange = (e) => {
     debugger;
     const value = e.target.value;
@@ -160,6 +173,16 @@ export default class ConfigEditor extends React.Component {
     }));
   }
 
+
+  deleteOption = (e) => {
+    const optionId = parseInt(e.target.parentElement.parentElement.getAttribute('data-option-id'), 10);
+    store.dispatch(actionsForm.deleteOption({
+      optionId,
+      currentId: this.props.currentComponentId,
+    }));
+  }
+
+
   getOptionsControl = () => {
     let jsx = '';
 
@@ -180,6 +203,10 @@ export default class ConfigEditor extends React.Component {
                         data-type="value"
                         onChange={this.optionChange}
                       />
+                      <div
+                        className="config-editor-option__delete"
+                        onClick={this.deleteOption}
+                      >X</div>
                     </div>
                     <div className='config-editor-option__item'>
                       <div className='config-editor-option__title'>Label:</div>
@@ -215,6 +242,7 @@ export default class ConfigEditor extends React.Component {
         {this.getNameControl()}
         {this.getMethodControl()}
         {this.getPlaceholderControl()}
+        {this.getLabelControl()}
         {this.getOptionsControl()}
       </div>
     );

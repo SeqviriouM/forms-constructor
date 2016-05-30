@@ -9,6 +9,7 @@ import Datepicker from 'components/Datepicker';
 import Label from 'components/Label';
 import Checkbox from 'components/Checkbox';
 import Radio from 'components/Radio';
+import Button from 'components/Button';
 import './styles.scss';
 import { CONTROLS } from 'constants';
 
@@ -82,7 +83,10 @@ export default class ElementsContainer extends React.Component {
         <div
           className={classes}
         >
-          <Select/>
+          <Select
+            options={this.props.item ? this.props.item.formControl.config.options : ''}
+            name={this.props.item ? this.props.item.formControl.config.name : ''}
+          />
         </div>
       );
     } else if (this.props.type === 'datepicker') {
@@ -111,6 +115,7 @@ export default class ElementsContainer extends React.Component {
           <Checkbox
             className='element__checkbox'
             options={this.props.item ? this.props.item.formControl.config.options : ''}
+            name={this.props.item ? this.props.item.formControl.config.name : ''}
           />
         </div>
       );
@@ -122,7 +127,20 @@ export default class ElementsContainer extends React.Component {
           <Radio
             className='element__radio'
             options={this.props.item ? this.props.item.formControl.config.options : ''}
+            name={this.props.item ? this.props.item.formControl.config.name : ''}
           />
+        </div>
+      );
+    } else if (this.props.type === 'button') {
+      renderTemplate = (
+        <div
+          className={classes}
+        >
+          <Button
+            className='element__button'
+            type='submit'
+            style={this.props.item ? this.props.item.formControl.style: ''}
+          >{this.props.item ? this.props.item.formControl.config.label : 'Submit'}</Button>
         </div>
       );
     }

@@ -1,0 +1,51 @@
+@import '~styles/variables.scss';
+@import '~styles/mixins.scss';
+
+.form-view {
+  padding: 0 15px 15px 15px;
+
+  &-wrapper {
+    padding: 30px 45px 45px 45px;
+    background: $c-form_bg;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    box-shadow: rgba(0, 0, 0, 0.14902) 0 0 0 1px, rgba(0, 0, 0, 0.498039) 0 8px 30px -5px;
+  }
+  &-container {
+    position: relative;
+    max-width: 1000px;
+    z-index: 15;
+    padding: 15px 10px;
+    background: #fff;
+    color: #000;
+  }
+
+  &__title {
+    height: 30px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 30px;
+  }
+
+  &__components {
+    min-width: 450px;
+  }
+
+  &__overlay {
+    position: fixed;
+    z-index: 14;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background: rgba(0, 0, 0, .7);
+  }
+
+  &-component {
+    &__label {
+      margin-bottom: 10px;
+    }
+  }
+}

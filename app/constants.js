@@ -24,6 +24,10 @@ const CONTROLS = {
     config: {
       name: 'defaultName',
       size: 'm',
+      options: [
+        { value: 'option1', label: 'Option 1', id: 0 },
+        { value: 'option2', label: 'Option 2', id: 1 }
+      ]
     },
     style: DEFAULT_CONTROL_STYLE,
   },
@@ -71,6 +75,22 @@ const CONTROLS = {
     },
     style: DEFAULT_CONTROL_STYLE,
   },
+  BUTTON: {
+    type: 'button',
+    config: {
+      label: 'Submit',
+      size: 'm',
+      type: 'submit'
+    },
+    style: {
+      color: '#ffffff',
+      backgroundColor: '#00bcd4',
+      'border-radius': '5px',
+      height: '50px',
+      'font-size': '20px',
+      width: '100%'
+    }
+  }
 };
 
 const FORM = new Map({

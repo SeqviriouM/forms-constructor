@@ -60,8 +60,11 @@ export default class Button extends React.Component {
     const classes = cx('button', this.props.className, {
       'button_type_in-progress': this.props.inProgress,
     });
+
+    let style = Object.assign({}, this.props.style);
+
     return (
-      <button {...this.props} className={classes}>
+      <button {...this.props} style={style} className={classes}>
         <div
           className='ripple'
           onMouseDown={this.startRipple}

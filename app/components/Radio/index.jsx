@@ -19,7 +19,12 @@ export default class Radio extends React.Component {
     return options.map((item) => {
       return (
         <div className='radio__element-wrapper'>
-          <input name={item.value} type='radio' className='radio__option'/>
+          <input
+            name={this.props.name ? this.props.name : 'radio'}
+            value={item.value}
+            type='radio'
+            className='radio__option'
+          />
           <label className='radio__label'>
             {item.label}
           </label>

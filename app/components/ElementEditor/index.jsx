@@ -54,7 +54,10 @@ export default class ElementEditor extends React.Component {
               config={this.props.control.data.get('config')} />
           </TabPanel>
           <TabPanel id={2}>
-            <StyleEditor />
+            <StyleEditor
+              type={this.props.control.type}
+              style={this.props.control.data.get('style')}
+            />
           </TabPanel>
         </TabContent>
       </div>

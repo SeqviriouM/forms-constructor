@@ -1,14 +1,17 @@
 import React, { PropTypes } from 'react';
 import { Motion, spring } from 'react-motion';
-import cx from 'classnames';
+import { connect } from 'react-redux';
 import store from 'store';
 import * as actionsForm from 'actions/form';
+import cx from 'classnames';
 import * as currentComponentIdActions from 'actions/currentComponentId';
 import Element from 'components/Element';
 import MaterialInput from 'components/MaterialInput';
 import './styles.scss';
 
-
+@connect(state => ({
+  currentComponentId: state.currentComponentId,
+}))
 export default class Form extends React.Component {
 
   static propTypes = {
@@ -38,6 +41,24 @@ export default class Form extends React.Component {
     }
     return jsx;
   }
+  
+  
+  changeComponentTitle = (e) => {
+    var value = e.target.value,
+      currentId = parseInt(e.target.parentElement.parentElement.parentElement.dataset.id, 10);
+
+    debugger;
+    store.dispatch(actionsForm.updateComponentTitle({
+      currentId,
+      value,
+    }));
+
+    if (currentId !== this.props.currentComponentId) {
+      store.dispatch(currentComponentIdActions.setComponentId({
+        currentId: parseInt(currentId, 10),
+      }));
+    }
+  }
 
 
   setCurrentComponent = (e) => {
@@ -55,6 +76,10 @@ export default class Form extends React.Component {
 
 
   cancelDeletionComponent = (e) => {
+    store.dispatch(currentComponentIdActions.setComponentId({
+      currentId: -1,
+    }));
+
     store.dispatch(actionsForm.cancelDeletionComponent({
       id: parseInt(e.currentTarget.dataset.id, 10),
     }));
@@ -84,7 +109,8 @@ export default class Form extends React.Component {
       >
         <div className='component__title'>
           <MaterialInput
-            defaultValue={this.props.item.title}
+            value={this.props.item.title}
+            onChange={this.changeComponentTitle}
           />
         </div>
         <div className='compoennt__control'>

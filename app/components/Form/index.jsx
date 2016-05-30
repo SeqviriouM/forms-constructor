@@ -100,6 +100,26 @@ export default class Form extends React.Component {
   }
 
 
+  viewForm = () => {
+    store.history.pushState(null, '/form-view');
+  }
+
+
+  getFormPreview() {
+    let jsx = '';
+
+    if (this.props.form.get('components').size) {
+      jsx = (
+        <div className='form-preview' onClick={this.viewForm}>
+          Preview
+        </div>
+      );
+    }
+
+    return jsx;
+  }
+
+
   handleTouchStart = (key, pressLocation, e) => {
     this.handleMouseDown(key, pressLocation, e.touches[0]);
   }
@@ -210,6 +230,7 @@ export default class Form extends React.Component {
               <span>+</span>
             </div>
           </form>
+          {this.getFormPreview()}
         </div>
       </div>
     );

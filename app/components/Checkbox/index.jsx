@@ -20,7 +20,12 @@ export default class Checkbox extends React.Component {
     return options.map((item) => {
       return (
         <div className='checkbox__element-wrapper'>
-          <input name={item.value} type='checkbox' className='checkbox__option'/>
+          <input
+            name={this.props.name ? this.props.name : 'checkbox'}
+            value={item.value}
+            type='checkbox'
+            className='checkbox__option'
+          />
           <label className='checkbox__label'>
             {item.label}
           </label>

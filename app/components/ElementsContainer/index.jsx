@@ -77,6 +77,16 @@ export default class ElementsContainer extends React.Component {
             <span> + </span>
           </div>
         </div>
+        <div className='element-container__item'>
+          <Element type='button' />
+          <div
+            className='element-container__add'
+            data-type='button'
+            onClick={this.addControlToForm}
+          >
+            <span> + </span>
+          </div>
+        </div>
       </div>
     );
   }

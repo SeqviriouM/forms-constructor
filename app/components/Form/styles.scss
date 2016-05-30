@@ -141,4 +141,21 @@
       box-shadow: rgba(0, 0, 0, 0.156863) 0 3px 10px, rgba(0, 0, 0, 0.227451) 0 3px 10px;
     }
   }
+
+  &-preview {
+    position: relative;
+    color: white;
+    border: 1px solid;
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #363E41;
+    border-radius: 3px;
+    margin: auto;
+    margin-bottom: -30px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
 }

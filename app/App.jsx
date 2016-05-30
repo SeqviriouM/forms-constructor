@@ -87,6 +87,7 @@ export default class Application extends React.Component {
       <DocumentTitle title='Form Constructor'>
         <div className='form-constructor-page'>
           <Header />
+          {this.props.children}
           <div className='container' id='outer-container'>
             <div className='element-container'>
               <ElasticMenu

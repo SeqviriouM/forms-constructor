@@ -70,3 +70,24 @@ export function updateOption(data) {
     payload: data,
   }
 }
+
+export function deleteOption(data) {
+  return {
+    type: 'DELETE_OPTION',
+    payload: data,
+  };
+}
+
+export function updateStyle(data) {
+  return {
+    type: 'UPDATE_STYLE',
+    payload: data,
+  };
+}
+
+export function updateComponentTitle(data) {
+  return {
+    type: 'UPDATE_COMPONENT_TITLE',
+    payload: data,
+  };
+}
