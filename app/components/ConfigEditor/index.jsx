@@ -27,7 +27,7 @@ export default class ConfigEditor extends React.Component {
     const type = e.target.getAttribute('data-type');
 
 
-    if (this.props.type === 'form') {
+    if (_this.props.type === 'form') {
       store.dispatch(actionsForm.updateFormConfig({
         type,
         value,
@@ -36,20 +36,29 @@ export default class ConfigEditor extends React.Component {
       store.dispatch(actionsForm.updateComponent({
         type,
         value,
-        currentId: this.props.currentComponentId,
+        currentId: _this.props.currentComponentId,
       }));
     }
   }
 
 
-  methodChange(e) {
-    const value = e.value;
-    const type = this['data-type'];
+  selectChange(data) {
+    debugger;
+    const value = data.value;
+    const type = data['data-type'];
 
-    store.dispatch(actionsForm.updateFormConfig({
-      type,
-      value,
-    }));
+    // if (this.props.type === 'form') {
+      store.dispatch(actionsForm.updateFormConfig({
+        type,
+        value,
+      }));
+    // } else {
+    //   store.dispatch(actionsForm.updateComponent({
+    //     type,
+    //     value,
+    //     currentId: this.props.currentComponentId,
+    //   }));
+    // }
   }
 
 
@@ -122,12 +131,40 @@ export default class ConfigEditor extends React.Component {
             options={methodOptions}
             className='config-editor-item__control'
             value={this.props.config.get('method')}
-            onChange = {this.methodChange}
+            onChange = {this.selectChange}
             data-type="method"
           />
         </div>
       );
     }
+    return jsx;
+  }
+
+
+  getTypeControl = () => {
+    let jsx = '';
+    const typeOptions = [
+      { value: 'text', label: 'Text' },
+      { value: 'tel', label: 'Tel' },
+      { value: 'email', label: 'Email' },
+      { value: 'password', label: 'Password' },
+    ];
+
+    if (this.props.config && this.props.config.get('type')) {
+      jsx = (
+        <div className='config-editor-item'>
+          <div className='config-editor-item__title'>Type:</div>
+          <Select
+            options={typeOptions}
+            className='config-editor-item__control'
+            value={this.props.config.get('type')}
+            onChange = {this.selectChange}
+            data-type="type"
+          />
+        </div>
+      );
+    }
+
     return jsx;
   }
 
@@ -236,13 +273,62 @@ export default class ConfigEditor extends React.Component {
   }
 
 
+  checkboxChange = (e) => {
+    debugger;
+  }
+
+
+  getRequiredControl = () => {
+    let jsx = '';
+
+    if (this.props.config && this.props.config.get('required')) {
+      jsx = (
+        <div className='config-editor-item'>
+          <div className='config-editor-item__title'>Required:</div>
+          <Checkbox
+            className='config-editor-item__control'
+            checked={this.props.config.get('required')}
+            data-type="required"
+            onChange = {this.checkboxChange}
+          />
+      </div>
+      );
+    }
+
+    return jsx;
+  }
+
+
+  getPatternControl = () => {
+    let jsx = '';
+
+    if (this.props.config && this.props.config.get('required')) {
+      jsx = (
+        <div className='config-editor-item'>
+          <div className='config-editor-item__title'>Pattern:</div>
+          <Input
+            className='config-editor-item__control'
+            value={this.props.config.get('pattern')}
+            data-type="pattern"
+            onChange={this.configChange}
+          />
+        </div>
+      );
+    }
+
+    return jsx;
+  }
+
   getElementContent() {
     return (
       <div>
         {this.getNameControl()}
         {this.getMethodControl()}
         {this.getPlaceholderControl()}
+        {this.getTypeControl()}
         {this.getLabelControl()}
+        {this.getRequiredControl()}
+        {this.getPatternControl()}
         {this.getOptionsControl()}
       </div>
     );

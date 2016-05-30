@@ -11,6 +11,8 @@ export default class Select extends React.Component {
     className: PropTypes.string,
     options: PropTypes.Array,
     value: PropTypes.string,
+    onChange: PropTypes.func,
+    onValueClick: PropTypes.func,
   }
 
   constructor(props) {
@@ -45,6 +47,7 @@ export default class Select extends React.Component {
         options={options}
         className={classes}
         onChange={this.props.onChange}
+        onValueClick={this.props.onValueClick}
         data-type={this.props['data-type']}
       />
     );

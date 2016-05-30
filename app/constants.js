@@ -15,7 +15,8 @@ const CONTROLS = {
       name: 'defaultName',
       placeholder: '',
       size: 'm',
-      type: ''
+      type: 'text',
+      required: false,
     },
     style: DEFAULT_CONTROL_STYLE,
   },
@@ -24,6 +25,7 @@ const CONTROLS = {
     config: {
       name: 'defaultName',
       size: 'm',
+      required: false,
       options: [
         { value: 'option1', label: 'Option 1', id: 0 },
         { value: 'option2', label: 'Option 2', id: 1 }
@@ -55,6 +57,7 @@ const CONTROLS = {
       name: 'defaultName',
       size: 'm',
       lastOptionId: 1,
+      required: false,
       options: [
         { value: 'option1', label: 'Option 1', id: 0 },
         { value: 'option2', label: 'Option 2', id: 1 }
@@ -68,6 +71,7 @@ const CONTROLS = {
       name: 'defaultName',
       size: 'm',
       lastRadioId: 1,
+      required: false,
       options: [
         { value: 'option1', label: 'Option 1', id: 0 },
         { value: 'option2', label: 'Option 2', id: 1 }

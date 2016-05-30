@@ -27,27 +27,6 @@
     min-width: 450px;
   }
 
-  &__overlay {
-    position: fixed;
-    z-index: 14;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    background: rgba(0, 0, 0, .7);
-  }
-
-  &__download {
-    position: relative;
-    z-index: 15;
-    background: #363E41;
-    color: $c-white;
-    padding: 10px 0;
-    text-align: center;
-    cursor: pointer;
-  }
-
   &-component {
     &__label {
       margin-bottom: 10px;
